@@ -1,0 +1,13 @@
+{
+  "name": "personal-homepage-starter",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "fetch:scholar": "node scripts/fetch_scholar.js"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0",
+    "undici": "^5.28.4"
+  }
+}

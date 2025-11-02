@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Name — Personal Homepage</title>
+  <meta name="description" content="The personal homepage of Your Name: research, publications, and projects." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="icon" href="assets/favicon.svg" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="site-header glass">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <img src="assets/logo.svg" alt="" class="brand-mark" />
+        <span class="brand-name">Your&nbsp;Name</span>
+      </a>
+      <nav class="nav">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="publications.html" class="nav-link">Publications</a>
+        <a href="projects.html" class="nav-link">Projects</a>
+      </nav>
+      <a class="cta" href="mailto:you@example.com">Contact</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <p class="eyebrow">Researcher & Engineer</p>
+        <h1 class="hero-title gradient-text">I build learning systems and write about them.</h1>
+        <p class="hero-subtitle">
+          I'm <strong>Your Name</strong>, a <em>Role @ Affiliation</em>. I study <span class="underline">topic area</span> and enjoy
+          building practical systems. This site collects my writing, publications, and projects.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="publications.html">View Publications</a>
+          <a class="button secondary" href="projects.html">Browse Projects</a>
+        </div>
+      </div>
+      <div class="hero-bg"></div>
+    </section>
+
+    <section class="cards">
+      <div class="container grid-3">
+        <article class="card">
+          <h3>What I'm focusing on</h3>
+          <p>Briefly describe what you're exploring right now. Keep it punchy and specific.</p>
+          <a class="text-link" href="projects.html">See projects →</a>
+        </article>
+        <article class="card">
+          <h3>Selected writing</h3>
+          <ul class="bullets">
+            <li><a href="#">Article title one</a></li>
+            <li><a href="#">Article title two</a></li>
+            <li><a href="#">Article title three</a></li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Get in touch</h3>
+          <p>Email is best. I'm also on X/Twitter and LinkedIn.</p>
+          <div class="socials">
+            <a href="mailto:you@example.com" aria-label="Email">✉️</a>
+            <a href="#" aria-label="Twitter / X">𝕏</a>
+            <a href="#" aria-label="LinkedIn">in</a>
+            <a href="#" aria-label="GitHub">GH</a>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Your Name. All rights reserved.</p>
+      <p class="footnote">This is a personal site. It uses a clean, dark style inspired by modern product sites.</p>
+    </div>
+  </footer>
+
+  <script src="assets/main.js" defer></script>
+</body>
+</html>

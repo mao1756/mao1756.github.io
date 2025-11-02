@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Publications — Your Name</title>
+  <meta name="description" content="Publications by Your Name, synced from Google Scholar." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="icon" href="assets/favicon.svg" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="site-header glass">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <img src="assets/logo.svg" alt="" class="brand-mark" />
+        <span class="brand-name">Your&nbsp;Name</span>
+      </a>
+      <nav class="nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="publications.html" class="nav-link active">Publications</a>
+        <a href="projects.html" class="nav-link">Projects</a>
+      </nav>
+      <a class="cta" href="mailto:you@example.com">Contact</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="page-header">
+      <h1 class="page-title">Publications</h1>
+      <p class="muted">This list syncs automatically from Google Scholar. Use the search and sort tools below.</p>
+      <div id="pub-last-updated" class="muted small"></div>
+    </section>
+
+    <section class="toolbar">
+      <input id="search" type="search" placeholder="Search title, author, venue…" />
+      <label class="control">
+        Sort by
+        <select id="sort">
+          <option value="year-desc">Year (new → old)</option>
+          <option value="year-asc">Year (old → new)</option>
+          <option value="cites-desc">Citations (high → low)</option>
+          <option value="cites-asc">Citations (low → high)</option>
+          <option value="title-asc">Title (A → Z)</option>
+          <option value="title-desc">Title (Z → A)</option>
+        </select>
+      </label>
+      <label class="switch">
+        <input id="groupByYear" type="checkbox" checked>
+        <span>Group by year</span>
+      </label>
+    </section>
+
+    <section id="pub-list" class="pub-list">
+      <!-- Publications will be injected here -->
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Your Name.</p>
+    </div>
+  </footer>
+
+  <script src="assets/publications.js" defer></script>
+</body>
+</html>
