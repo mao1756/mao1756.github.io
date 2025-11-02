@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Publications — Your Name</title>
-  <meta name="description" content="Publications by Your Name, synced from Google Scholar." />
+  <meta name="description" content="Publications by Your Name, synced from SerpAPI (Google Scholar Author), OpenAlex, or Google Scholar (optional)." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -30,7 +30,7 @@
   <main class="container">
     <section class="page-header">
       <h1 class="page-title">Publications</h1>
-      <p class="muted">This list syncs automatically from Google Scholar. Use the search and sort tools below.</p>
+      <p class="muted">This list syncs automatically from SerpAPI (Google Scholar Author), with OpenAlex and direct Scholar as fallbacks.</p>
       <div id="pub-last-updated" class="muted small"></div>
     </section>
 
@@ -53,9 +53,7 @@
       </label>
     </section>
 
-    <section id="pub-list" class="pub-list">
-      <!-- Publications will be injected here -->
-    </section>
+    <section id="pub-list" class="pub-list"></section>
   </main>
 
   <footer class="site-footer">
