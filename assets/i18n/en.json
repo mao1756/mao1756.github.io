@@ -35,7 +35,7 @@
   },
   "pub": {
     "page_title": "Publications",
-    "subtitle": "This list syncs automatically from SerpAPI (Google Scholar Author), with OpenAlex and direct Scholar as fallbacks.",
+    "subtitle": "This list syncs automatically with Google Scholar thanks to SerpAPI.",
     "toolbar": {
       "search_placeholder": "Search title, author, venue…",
       "sort_label": "Sort by",
