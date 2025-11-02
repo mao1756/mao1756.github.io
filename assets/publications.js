@@ -1,4 +1,4 @@
-// Client-side renderer (search/sort/group by year)
+// Publications renderer (search/sort/group by year)
 const S={pubs:[],filtered:[],groupByYear:true,sort:'year-desc',query:''};const $=s=>document.querySelector(s);
 function apply(){const q=(S.query||'').toLowerCase();S.filtered=S.pubs.filter(p=>(`${p.title} ${p.authors||''} ${p.venue||''}`).toLowerCase().includes(q));
   const cmp={'year-desc':(a,b)=>(b.year||0)-(a.year||0),'year-asc':(a,b)=>(a.year||0)-(b.year||0),'cites-desc':(a,b)=>(b.citations||0)-(a.citations||0),'cites-asc':(a,b)=>(a.citations||0)-(b.citations||0),'title-asc':(a,b)=>a.title.localeCompare(b.title),'title-desc':(a,b)=>b.title.localeCompare(a.title)}[S.sort];S.filtered.sort(cmp);}
