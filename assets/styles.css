@@ -46,7 +46,7 @@ a{color:var(--link);text-decoration:none}a:hover{text-decoration:underline}img{m
 .pub-title{font-weight:700}.pub-meta{color:#a3a9b8;font-size:.95rem}.badge{display:inline-flex;align-items:center;gap:.35rem;background:var(--panel);border:1px solid var(--border);padding:.2rem .5rem;border-radius:999px;font-size:.85rem}
 .site-footer{border-top:1px solid var(--border);padding:24px 0;color:#a3a9b8}.footer-inner{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
 body.menu-open{overflow:hidden}
-@media (max-width: 980px){.hero-inner{grid-template-columns:1fr}.portrait-wrap{justify-self:start}.portrait{width:140px;height:140px}}
+@media (max-width: 980px){.hero-inner{grid-template-columns:1fr}.portrait-wrap{justify-self:center;text-align:center}.portrait{width:140px;height:140px}}
 @media (max-width: 860px){
   .grid-3{grid-template-columns:1fr}
   .pub-item{grid-template-columns:1fr}
