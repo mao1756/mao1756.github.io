@@ -1,7 +1,12 @@
-name: Update publications (Google Scholar)
+name: Update publications
 
 on:
   workflow_dispatch:
+    inputs:
+      source:
+        description: "Source: serpapi (default), openalex, or scholar"
+        required: false
+        default: "serpapi"
   schedule:
     - cron: "0 6 * * 1"  # every Monday 06:00 UTC
   push:
@@ -24,10 +29,21 @@ jobs:
       - name: Install dependencies
         run: npm ci || npm i
 
-      - name: Fetch Google Scholar publications
+      - name: Fetch publications (SerpAPI default)
         env:
+          SOURCE: ${{ github.event.inputs.source || 'serpapi' }}
+          SERPAPI_API_KEY: ${{ secrets.SERPAPI_API_KEY }}
           SCHOLAR_ID: ${{ secrets.SCHOLAR_ID }}
-        run: npm run fetch:scholar
+          OPENALEX_AUTHOR_ID: ${{ secrets.OPENALEX_AUTHOR_ID }}
+          OPENALEX_QUERY: ${{ secrets.OPENALEX_QUERY }}
+        run: |
+          if [ "$SOURCE" = "openalex" ]; then
+            npm run fetch:openalex
+          elif [ "$SOURCE" = "scholar" ]; then
+            npm run fetch:scholar
+          else
+            npm run fetch:serpapi
+          fi
 
       - name: Commit and push changes (if any)
         run: |
@@ -37,6 +53,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else
-            git commit -m "chore: update publications.json from Google Scholar"
+            git commit -m "chore: update publications.json"
             git push
           fi
