@@ -5,10 +5,19 @@ html,body{padding:0;margin:0;background:var(--bg);color:var(--text);font-family:
 a{color:var(--link);text-decoration:none}a:hover{text-decoration:underline}img{max-width:100%;display:block}
 .container{max-width:1100px;margin:0 auto;padding:0 20px}
 .site-header{position:sticky;top:0;z-index:10;border-bottom:1px solid var(--border);backdrop-filter:saturate(180%) blur(12px)}.glass{background:linear-gradient(180deg, rgba(12,14,18,0.85), rgba(12,14,18,0.65))}
-.header-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+.header-inner{display:flex;align-items:center;justify-content:space-between;height:64px;gap:1rem;position:relative}
 .brand{display:flex;gap:.6rem;align-items:center}.brand-mark{width:26px;height:26px;opacity:.9}.brand-name{font-weight:700;letter-spacing:.2px}
+.menu-toggle{display:none;align-items:center;gap:.5rem;padding:.45rem .75rem;border-radius:10px;border:1px solid var(--border);background:var(--panel);color:var(--text);cursor:pointer;font-weight:600}
+.menu-toggle:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.menu-icon{position:relative;width:18px;height:2px;background:var(--text);transition:transform .25s ease,background .25s ease}
+.menu-icon::before,.menu-icon::after{content:"";position:absolute;left:0;width:18px;height:2px;background:var(--text);transition:transform .25s ease,top .25s ease,opacity .25s ease}
+.menu-icon::before{top:-6px}
+.menu-icon::after{top:6px}
+.menu-label{font-size:.9rem}
+.header-actions{display:flex;align-items:center;gap:1rem;margin-left:auto}
 .nav{display:flex;gap:1rem;align-items:center}.nav-link{padding:.4rem .7rem;border-radius:10px}.nav-link.active{background:var(--glass)}
 .header-cta-wrap{display:flex;align-items:center;gap:.6rem}
+.header-cta-wrap .lang-toggle,.header-cta-wrap .cta{white-space:nowrap}
 .lang-toggle{display:inline-flex;align-items:center;gap:.2rem;border:1px solid var(--border);background:var(--panel);color:var(--text);padding:.4rem .6rem;border-radius:10px;font-weight:600;cursor:pointer;min-height:36px}
 .lang-toggle .on{color:#fff}
 .cta{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#000;padding:.5rem .9rem;border-radius:999px;font-weight:700;box-shadow:var(--shadow)}.cta:hover{text-decoration:none;opacity:.95}
@@ -36,5 +45,20 @@ a{color:var(--link);text-decoration:none}a:hover{text-decoration:underline}img{m
 .pub-item{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:start;padding:12px;border-bottom:1px dashed var(--border)}
 .pub-title{font-weight:700}.pub-meta{color:#a3a9b8;font-size:.95rem}.badge{display:inline-flex;align-items:center;gap:.35rem;background:var(--panel);border:1px solid var(--border);padding:.2rem .5rem;border-radius:999px;font-size:.85rem}
 .site-footer{border-top:1px solid var(--border);padding:24px 0;color:#a3a9b8}.footer-inner{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+body.menu-open{overflow:hidden}
 @media (max-width: 980px){.hero-inner{grid-template-columns:1fr}.portrait-wrap{justify-self:start}.portrait{width:140px;height:140px}}
-@media (max-width: 860px){.grid-3{grid-template-columns:1fr}.pub-item{grid-template-columns:1fr}.nav{display:none}}
+@media (max-width: 860px){
+  .grid-3{grid-template-columns:1fr}
+  .pub-item{grid-template-columns:1fr}
+  .menu-toggle{display:inline-flex}
+  .menu-label{display:inline}
+  .header-actions{position:absolute;top:64px;right:20px;left:20px;display:none;flex-direction:column;align-items:stretch;gap:1rem;background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow);z-index:20}
+  body.menu-open .header-actions{display:flex}
+  .header-actions .nav{flex-direction:column;align-items:stretch;gap:.4rem}
+  .header-actions .nav-link{width:100%;padding:.7rem .9rem}
+  .header-cta-wrap{flex-direction:column;align-items:stretch;gap:.7rem}
+  .header-cta-wrap .lang-toggle,.header-cta-wrap .cta{width:100%;justify-content:center}
+  body.menu-open .menu-icon{background:transparent}
+  body.menu-open .menu-icon::before{top:0;transform:rotate(45deg)}
+  body.menu-open .menu-icon::after{top:0;transform:rotate(-45deg)}
+}
