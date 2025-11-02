@@ -1,0 +1,75 @@
+{
+  "nav": {
+    "home": "Home",
+    "publications": "Publications",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "hero": {
+    "eyebrow": "PhD Candidate · Biomathematics",
+    "title": "Optimal transport, geometry, and machine learning.",
+    "subtitle": "I'm Mao Nishino, a PhD candidate in Mathematics at Florida State University. My research interests include optimal transport, deep learning, Riemannian & metric geometry, and data science.",
+    "buttons": {
+      "publications": "View Publications",
+      "projects": "Browse Projects"
+    }
+  },
+  "cards": {
+    "research": {
+      "title": "Research interests",
+      "i1": "Optimal Transport",
+      "i2": "Deep Learning",
+      "i3": "Riemannian & Metric Geometry",
+      "i4": "Data Science"
+    },
+    "edu": {
+      "title": "Current & Education",
+      "b1": "Ph.D. Mathematics (2021–present), Florida State University",
+      "b2": "B.Sc. Mathematics (2017–2021), Kanazawa University",
+      "cta": "See my recent work →"
+    },
+    "contact": {
+      "title": "Get in touch",
+      "text": "Email is best. You can also find me on LinkedIn and GitHub."
+    }
+  },
+  "pub": {
+    "page_title": "Publications",
+    "subtitle": "This list syncs automatically from SerpAPI (Google Scholar Author), with OpenAlex and direct Scholar as fallbacks.",
+    "toolbar": {
+      "search_placeholder": "Search title, author, venue…",
+      "sort_label": "Sort by",
+      "sort": {
+        "year_desc": "Year (new → old)",
+        "year_asc": "Year (old → new)",
+        "cites_desc": "Citations (high → low)",
+        "cites_asc": "Citations (low → high)",
+        "title_asc": "Title (A → Z)",
+        "title_desc": "Title (Z → A)"
+      },
+      "group_by_year": "Group by year"
+    },
+    "last_updated_prefix": "Last updated:",
+    "citations": "cites",
+    "no_year": "No year"
+  },
+  "proj": {
+    "page_title": "Projects",
+    "placeholder_note": "This page is a placeholder. Add projects as cards below when you’re ready.",
+    "card1": {
+      "title": "Project title",
+      "desc": "One or two lines describing what the project is and why it exists.",
+      "cta": "Learn more →"
+    },
+    "card2": {
+      "title": "Another project",
+      "desc": "A short description. Link to repo, demo, or paper.",
+      "cta": "See repo →"
+    },
+    "card3": {
+      "title": "Future work",
+      "desc": "Reserve space for something you'd like to build next.",
+      "cta": "Details →"
+    }
+  }
+}

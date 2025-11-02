@@ -19,37 +19,40 @@
         <span class="brand-name">Mao&nbsp;Nishino</span>
       </a>
       <nav class="nav">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="publications.html" class="nav-link active">Publications</a>
-        <a href="projects.html" class="nav-link">Projects</a>
+        <a href="index.html" class="nav-link" data-i18n="nav.home">Home</a>
+        <a href="publications.html" class="nav-link active" data-i18n="nav.publications">Publications</a>
+        <a href="projects.html" class="nav-link" data-i18n="nav.projects">Projects</a>
       </nav>
-      <a class="cta" href="mailto:mnishino@fsu.edu">Contact</a>
+      <div class="header-cta-wrap">
+        <button id="langToggle" class="lang-toggle" type="button" aria-label="Language">JP / EN</button>
+        <a class="cta" href="mailto:mnishino@fsu.edu" data-i18n="nav.contact">Contact</a>
+      </div>
     </div>
   </header>
 
   <main class="container">
     <section class="page-header">
-      <h1 class="page-title">Publications</h1>
-      <p class="muted">This list syncs automatically from SerpAPI (Google Scholar Author), with OpenAlex and direct Scholar as fallbacks.</p>
+      <h1 class="page-title" data-i18n="pub.page_title">Publications</h1>
+      <p class="muted" data-i18n="pub.subtitle">This list syncs automatically from SerpAPI (Google Scholar Author), with OpenAlex and direct Scholar as fallbacks.</p>
       <div id="pub-last-updated" class="muted small"></div>
     </section>
 
     <section class="toolbar">
-      <input id="search" type="search" placeholder="Search title, author, venue…" />
+      <input id="search" type="search" data-i18n="pub.toolbar.search_placeholder" data-i18n-attr="placeholder" placeholder="Search title, author, venue…" />
       <label class="control">
-        Sort by
+        <span data-i18n="pub.toolbar.sort_label">Sort by</span>
         <select id="sort">
-          <option value="year-desc">Year (new → old)</option>
-          <option value="year-asc">Year (old → new)</option>
-          <option value="cites-desc">Citations (high → low)</option>
-          <option value="cites-asc">Citations (low → high)</option>
-          <option value="title-asc">Title (A → Z)</option>
-          <option value="title-desc">Title (Z → A)</option>
+          <option value="year-desc" data-i18n="pub.toolbar.sort.year_desc">Year (new → old)</option>
+          <option value="year-asc" data-i18n="pub.toolbar.sort.year_asc">Year (old → new)</option>
+          <option value="cites-desc" data-i18n="pub.toolbar.sort.cites_desc">Citations (high → low)</option>
+          <option value="cites-asc" data-i18n="pub.toolbar.sort.cites_asc">Citations (low → high)</option>
+          <option value="title-asc" data-i18n="pub.toolbar.sort.title_asc">Title (A → Z)</option>
+          <option value="title-desc" data-i18n="pub.toolbar.sort.title_desc">Title (Z → A)</option>
         </select>
       </label>
       <label class="switch">
         <input id="groupByYear" type="checkbox" checked>
-        <span>Group by year</span>
+        <span data-i18n="pub.toolbar.group_by_year">Group by year</span>
       </label>
     </section>
 
@@ -62,6 +65,7 @@
     </div>
   </footer>
 
+  <script src="assets/main.js" defer></script>
   <script src="assets/publications.js" defer></script>
 </body>
 </html>

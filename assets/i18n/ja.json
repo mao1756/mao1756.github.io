@@ -1,0 +1,75 @@
+{
+  "nav": {
+    "home": "ホーム",
+    "publications": "研究業績",
+    "projects": "プロジェクト",
+    "contact": "連絡する"
+  },
+  "hero": {
+    "eyebrow": "博士課程（数理生物学）",
+    "title": "最適輸送、幾何学、機械学習。",
+    "subtitle": "私はフロリダ州立大学・数学科の博士課程学生、Mao Nishino です。研究関心は、最適輸送、深層学習、リーマン幾何・距離幾何、データサイエンスです。",
+    "buttons": {
+      "publications": "研究業績を見る",
+      "projects": "プロジェクトを見る"
+    }
+  },
+  "cards": {
+    "research": {
+      "title": "研究分野",
+      "i1": "最適輸送",
+      "i2": "深層学習",
+      "i3": "リーマン幾何・距離幾何",
+      "i4": "データサイエンス"
+    },
+    "edu": {
+      "title": "現在・学歴",
+      "b1": "フロリダ州立大学 数学 博士課程（2021–現在）",
+      "b2": "金沢大学 数学 学士（2017–2021）",
+      "cta": "最近の研究を見る →"
+    },
+    "contact": {
+      "title": "お問い合わせ",
+      "text": "ご連絡はメールが確実です。LinkedIn と GitHub にもいます。"
+    }
+  },
+  "pub": {
+    "page_title": "研究業績",
+    "subtitle": "この一覧は SerpAPI（Google Scholar Author）から自動同期します。OpenAlex と直接 Scholar を併用できます。",
+    "toolbar": {
+      "search_placeholder": "タイトル・著者・掲載誌で検索…",
+      "sort_label": "並べ替え",
+      "sort": {
+        "year_desc": "年（新しい→古い）",
+        "year_asc": "年（古い→新しい）",
+        "cites_desc": "被引用数（多い→少ない）",
+        "cites_asc": "被引用数（少ない→多い）",
+        "title_asc": "タイトル（A→Z）",
+        "title_desc": "タイトル（Z→A）"
+      },
+      "group_by_year": "年ごとにまとめる"
+    },
+    "last_updated_prefix": "最終更新：",
+    "citations": "件の被引用",
+    "no_year": "年未設定"
+  },
+  "proj": {
+    "page_title": "プロジェクト",
+    "placeholder_note": "このページはプレースホルダです。準備ができたらカードを追加してください。",
+    "card1": {
+      "title": "プロジェクト名",
+      "desc": "プロジェクトの概要を 1–2 行で記述。",
+      "cta": "詳細を見る →"
+    },
+    "card2": {
+      "title": "別のプロジェクト",
+      "desc": "簡単な説明。リポジトリ、デモ、論文などへのリンク。",
+      "cta": "リポジトリを見る →"
+    },
+    "card3": {
+      "title": "今後の予定",
+      "desc": "今後取り組みたい内容のためのスペース。",
+      "cta": "詳細 →"
+    }
+  }
+}
