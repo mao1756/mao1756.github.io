@@ -1,7 +1,7 @@
 {
   "nav": {
     "home": "Home",
-    "publications": "Publications",
+    "research": "Research",
     "projects": "Projects",
     "contact": "Contact"
   },
@@ -10,7 +10,7 @@
     "title": "Optimal transport, geometry, and machine learning.",
     "subtitle": "I'm Mao Nishino, a PhD candidate in Mathematics at Florida State University. My research interests include optimal transport, deep learning, Riemannian & metric geometry, and data science.",
     "buttons": {
-      "publications": "View Publications",
+      "research": "Explore Research",
       "projects": "Browse Projects"
     }
   },
@@ -34,8 +34,19 @@
     }
   },
   "pub": {
-    "page_title": "Publications",
+    "page_title": "Research",
     "subtitle": "This list syncs automatically with Google Scholar thanks to SerpAPI.",
+    "overview": {
+      "title": "Research overview",
+      "optimal_transport": {
+        "title": "Optimal transport",
+        "body": "I study the theory and applications of optimal transport, with a particular emphasis on Wasserstein–Fisher–Rao and Gromov–Wasserstein distances."
+      },
+      "deep_learning": {
+        "title": "Deep learning",
+        "body": "I investigate adversarial attacks targeting both language and vision models, developing robust methodologies and evaluation protocols."
+      }
+    },
     "toolbar": {
       "search_placeholder": "Search title, author, venue…",
       "sort_label": "Sort by",
