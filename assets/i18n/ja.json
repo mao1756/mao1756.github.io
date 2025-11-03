@@ -1,7 +1,7 @@
 {
   "nav": {
     "home": "ホーム",
-    "publications": "研究業績",
+    "research": "研究",
     "projects": "プロジェクト",
     "contact": "連絡する"
   },
@@ -10,7 +10,7 @@
     "title": "最適輸送・幾何学・機械学習",
     "subtitle": "私はフロリダ州立大学・数学科の博士課程学生、西野眞王 です。最適輸送、深層学習、リーマン幾何・距離幾何、データサイエンスに興味を持っています。",
     "buttons": {
-      "publications": "研究業績を見る",
+      "research": "研究内容を見る",
       "projects": "プロジェクトを見る"
     }
   },
@@ -34,8 +34,19 @@
     }
   },
   "pub": {
-    "page_title": "研究業績",
+    "page_title": "研究",
     "subtitle": "この一覧はGoogle Scholarから自動同期します。",
+    "overview": {
+      "title": "研究概要",
+      "optimal_transport": {
+        "title": "最適輸送",
+        "body": "最適輸送の理論と応用を研究しており、特にWasserstein–Fisher–Rao距離とGromov–Wasserstein距離に焦点を当てています。"
+      },
+      "deep_learning": {
+        "title": "深層学習",
+        "body": "言語モデルとビジョンモデルの双方を対象とした敵対的攻撃を調査し、堅牢な手法と評価プロトコルを構築しています。"
+      }
+    },
     "toolbar": {
       "search_placeholder": "タイトル・著者・掲載誌で検索…",
       "sort_label": "並べ替え",
