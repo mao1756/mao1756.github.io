@@ -1,5 +1,5 @@
 {
-  "updated_at": "2025-11-10T06:05:33.152Z",
+  "updated_at": "2025-11-17T06:05:25.085Z",
   "author": "i_bL0hwAAAAJ",
   "publications": [
     {
@@ -15,8 +15,16 @@
       "authors": "S Biswas, M Nishino, SJ Chacko, X Liu",
       "venue": "Accepted to International Joint Conference on Neural Networks (IJCNN) 2025 …, 2025",
       "year": 2025,
-      "citations": 1,
+      "citations": 2,
       "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=i_bL0hwAAAAJ&pagesize=100&citation_for_view=i_bL0hwAAAAJ:eQOLeE2rZwMC"
+    },
+    {
+      "title": "Unaligning Everything: Or Aligning Any Text to Any Image in Multimodal Models",
+      "authors": "S Salman, M Shams, M Nishino, X Liu",
+      "venue": "2025 International Joint Conference on Neural Networks (IJCNN), 2025",
+      "year": 2025,
+      "citations": 0,
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=i_bL0hwAAAAJ&pagesize=100&citation_for_view=i_bL0hwAAAAJ:Se3iqnhoufwC"
     },
     {
       "title": "Path constrained unbalanced optimal transport",
