@@ -2,7 +2,6 @@
   "nav": {
     "home": "Home",
     "research": "Research",
-    "projects": "Projects",
     "contact": "Contact"
   },
   "hero": {
@@ -10,8 +9,7 @@
     "title": "Optimal transport, geometry, and machine learning.",
     "subtitle": "I'm Mao Nishino, a PhD candidate in Mathematics at Florida State University. My research interests include optimal transport, deep learning, Riemannian & metric geometry, and data science.",
     "buttons": {
-      "research": "Explore Research",
-      "projects": "Browse Projects"
+      "research": "Explore Research"
     }
   },
   "cards": {
@@ -63,24 +61,5 @@
     "last_updated_prefix": "Last updated:",
     "citations": "cites",
     "no_year": "No year"
-  },
-  "proj": {
-    "page_title": "Projects",
-    "placeholder_note": "This page is a placeholder. Add projects as cards below when you’re ready.",
-    "card1": {
-      "title": "Project title",
-      "desc": "One or two lines describing what the project is and why it exists.",
-      "cta": "Learn more →"
-    },
-    "card2": {
-      "title": "Another project",
-      "desc": "A short description. Link to repo, demo, or paper.",
-      "cta": "See repo →"
-    },
-    "card3": {
-      "title": "Future work",
-      "desc": "Reserve space for something you'd like to build next.",
-      "cta": "Details →"
-    }
   }
 }
