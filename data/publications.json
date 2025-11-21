@@ -1,5 +1,5 @@
 {
-  "updated_at": "2025-11-17T06:05:25.085Z",
+  "updated_at": "2025-11-21T09:28:06.736Z",
   "author": "i_bL0hwAAAAJ",
   "publications": [
     {
@@ -37,7 +37,7 @@
     {
       "title": "The Z-Gromov-Wasserstein distance",
       "authors": "M Bauer, F Mémoli, T Needham, M Nishino",
-      "venue": "Accepted to Journal of Machine Learning Research, arXiv preprint arXiv:2408 …, 2024",
+      "venue": "arXiv preprint arXiv:2408.08233, 2024",
       "year": 2024,
       "citations": 7,
       "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=i_bL0hwAAAAJ&pagesize=100&citation_for_view=i_bL0hwAAAAJ:d1gkVwhDpl0C"
