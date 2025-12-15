@@ -1,5 +1,5 @@
 {
-  "updated_at": "2025-12-08T06:05:39.885Z",
+  "updated_at": "2025-12-15T06:05:58.494Z",
   "author": "i_bL0hwAAAAJ",
   "publications": [
     {
@@ -31,15 +31,23 @@
       "authors": "M Bauer, N Charon, T Needham, M Nishino",
       "venue": "Nonlinearity 38 (7), 075019, 2025",
       "year": 2025,
-      "citations": 0,
+      "citations": 1,
       "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=i_bL0hwAAAAJ&pagesize=100&citation_for_view=i_bL0hwAAAAJ:ufrVoPGSRksC"
+    },
+    {
+      "title": "A Benamou-Brenier Proximal Splitting Method for Constrained Unbalanced Optimal Transport",
+      "authors": "M Nishino, M Bauer, T Needham, N Charon",
+      "venue": "arXiv preprint arXiv:2512.09250, 2025",
+      "year": 2025,
+      "citations": 0,
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=i_bL0hwAAAAJ&pagesize=100&citation_for_view=i_bL0hwAAAAJ:hqOjcs7Dif8C"
     },
     {
       "title": "The Z-Gromov-Wasserstein distance",
       "authors": "M Bauer, F Mémoli, T Needham, M Nishino",
       "venue": "arXiv preprint arXiv:2408.08233, 2024",
       "year": 2024,
-      "citations": 7,
+      "citations": 8,
       "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=i_bL0hwAAAAJ&pagesize=100&citation_for_view=i_bL0hwAAAAJ:d1gkVwhDpl0C"
     }
   ]
