@@ -1,7 +1,7 @@
 {
   "name": "Timekeeping",
   "short_name": "Timekeeping",
-  "start_url": ".",
+  "start_url": "./?v=2",
   "display": "standalone",
   "background_color": "#0b0d12",
   "theme_color": "#0b0d12",
