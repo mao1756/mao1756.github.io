@@ -2,6 +2,7 @@
   "nav": {
     "home": "Home",
     "research": "Research",
+    "projects": "Projects",
     "contact": "Contact"
   },
   "hero": {
@@ -61,5 +62,14 @@
     "last_updated_prefix": "Last updated:",
     "citations": "cites",
     "no_year": "No year"
+  },
+  "projects": {
+    "page_title": "Projects",
+    "subtitle": "Research software and experiments I have developed.",
+    "section_title": "Featured software",
+    "acuot": {
+      "body": "ACUOT is a research codebase that explores optimal transport-based models, providing training scripts, evaluation utilities, and reproducible experiment settings.",
+      "cta": "View the code on GitHub →"
+    }
   }
 }
