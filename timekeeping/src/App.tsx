@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
+import type { CSSProperties } from 'react';
 import type { Plan, PlanEvent, RunState } from './types';
 import { loadFromStorage, saveToStorage } from './utils/storage';
 import {
@@ -30,10 +31,15 @@ const defaultRunState = (plan: Plan): RunState => ({
   completedAtMs: null
 });
 
-type Settings = { allowOverlaps: boolean };
+type Settings = { allowOverlaps: boolean; snapMinutes: number };
+
+const getDefaultSnapMinutes = () => {
+  if (typeof window === 'undefined') return 5;
+  return window.matchMedia('(max-width: 720px)').matches ? 15 : 5;
+};
 
 const loadSettings = (): Settings =>
-  loadFromStorage<Settings>(SETTINGS_KEY, { allowOverlaps: false });
+  loadFromStorage<Settings>(SETTINGS_KEY, { allowOverlaps: false, snapMinutes: getDefaultSnapMinutes() });
 
 const saveSettings = (settings: Settings) => saveToStorage(SETTINGS_KEY, settings);
 
@@ -55,6 +61,20 @@ const planToKey = (plan: Plan) => JSON.stringify({
     notes
   }))
 });
+
+type DragMode = 'create' | 'move' | 'resize-start' | 'resize-end';
+
+type DragState = {
+  mode: DragMode;
+  eventId: string;
+  anchorStartSec: number;
+  anchorEndSec: number;
+  pointerOffsetSec: number;
+  startSec: number;
+  endSec: number;
+  conflict: boolean;
+  pointerId: number;
+};
 
 const getElapsedSec = (state: RunState | null) => {
   if (!state || state.status === 'idle') return 0;
@@ -339,6 +359,8 @@ export const App = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [, setTick] = useState(0);
   const lastEventRef = useRef<string | null>(null);
+  const schedulerRef = useRef<HTMLDivElement | null>(null);
+  const [dragState, setDragState] = useState<DragState | null>(null);
 
   const planKey = useMemo(() => planToKey(plan), [plan]);
   const runPlanKey = useMemo(() => (runState ? planToKey(runState.planSnapshot) : ''), [runState]);
@@ -355,6 +377,12 @@ export const App = () => {
   useEffect(() => {
     saveSettings(settings);
   }, [settings]);
+
+  useEffect(() => {
+    if (!settings.snapMinutes) {
+      setSettings((prev) => ({ ...prev, snapMinutes: getDefaultSnapMinutes() }));
+    }
+  }, [settings.snapMinutes]);
 
   useEffect(() => {
     if (view === 'run') {
@@ -376,6 +404,22 @@ export const App = () => {
     () => validatePlan(plan, settings.allowOverlaps),
     [plan, settings.allowOverlaps]
   );
+  const snapMinutes = Math.max(1, settings.snapMinutes || getDefaultSnapMinutes());
+  const totalMinutes = Math.max(1, Math.ceil(plan.totalDurationSec / 60));
+  const pixelsPerMinute = 3;
+  const gridHeight = totalMinutes * pixelsPerMinute;
+  const minDurationSec = snapMinutes * 60;
+  const timeLabels = useMemo(() => {
+    const interval = totalMinutes <= 240 ? 30 : 60;
+    const labels: number[] = [];
+    for (let minute = 0; minute <= totalMinutes; minute += interval) {
+      labels.push(minute);
+    }
+    if (labels[labels.length - 1] !== totalMinutes) {
+      labels.push(totalMinutes);
+    }
+    return labels;
+  }, [totalMinutes]);
 
   const runEvents = useMemo(() => (runState ? sortEvents(runState.planSnapshot.events) : []), [runState]);
   const currentEvent = useMemo(
@@ -412,6 +456,178 @@ export const App = () => {
     }
     lastEventRef.current = currentId;
   }, [currentEvent, runState]);
+
+  const getPointerSec = (clientY: number) => {
+    const container = schedulerRef.current;
+    if (!container) return 0;
+    const rect = container.getBoundingClientRect();
+    const offsetY = clamp(clientY - rect.top + container.scrollTop, 0, gridHeight);
+    return (offsetY / gridHeight) * plan.totalDurationSec;
+  };
+
+  const snapSeconds = (sec: number) => {
+    const snap = snapMinutes * 60;
+    return clamp(Math.round(sec / snap) * snap, 0, plan.totalDurationSec);
+  };
+
+  const hasOverlap = (startSec: number, endSec: number, ignoreId?: string) => {
+    if (settings.allowOverlaps) return false;
+    return plan.events.some(
+      (event) =>
+        event.id !== ignoreId &&
+        startSec < event.endSec &&
+        endSec > event.startSec
+    );
+  };
+
+  const getEventPosition = (startSec: number, endSec: number) => {
+    const top = (startSec / plan.totalDurationSec) * gridHeight;
+    const height = ((endSec - startSec) / plan.totalDurationSec) * gridHeight;
+    return { top, height };
+  };
+
+  const formatTimeLabel = (minutes: number) => {
+    const hours = Math.floor(minutes / 60);
+    const mins = minutes % 60;
+    return `${hours.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}`;
+  };
+
+  const handleDragMove = (event: React.PointerEvent) => {
+    if (!dragState || event.pointerId !== dragState.pointerId) return;
+    const pointerSec = getPointerSec(event.clientY);
+    let startSec = dragState.startSec;
+    let endSec = dragState.endSec;
+
+    if (dragState.mode === 'move') {
+      const duration = dragState.anchorEndSec - dragState.anchorStartSec;
+      const snappedStart = snapSeconds(pointerSec - dragState.pointerOffsetSec);
+      startSec = clamp(snappedStart, 0, plan.totalDurationSec - duration);
+      endSec = startSec + duration;
+    }
+
+    if (dragState.mode === 'resize-start') {
+      const snappedStart = snapSeconds(pointerSec);
+      startSec = clamp(snappedStart, 0, dragState.anchorEndSec - minDurationSec);
+      endSec = dragState.anchorEndSec;
+    }
+
+    if (dragState.mode === 'resize-end') {
+      const snappedEnd = snapSeconds(pointerSec);
+      startSec = dragState.anchorStartSec;
+      endSec = clamp(snappedEnd, dragState.anchorStartSec + minDurationSec, plan.totalDurationSec);
+    }
+
+    if (dragState.mode === 'create') {
+      const snapped = snapSeconds(pointerSec);
+      startSec = Math.min(snapped, dragState.anchorStartSec);
+      endSec = Math.max(snapped, dragState.anchorStartSec);
+      if (endSec - startSec < minDurationSec) {
+        if (snapped >= dragState.anchorStartSec) {
+          endSec = Math.min(startSec + minDurationSec, plan.totalDurationSec);
+        } else {
+          startSec = Math.max(endSec - minDurationSec, 0);
+        }
+      }
+    }
+
+    const conflict = hasOverlap(startSec, endSec, dragState.mode === 'create' ? undefined : dragState.eventId);
+    setDragState((prev) =>
+      prev
+        ? {
+            ...prev,
+            startSec,
+            endSec,
+            conflict
+          }
+        : prev
+    );
+  };
+
+  const handleDragEnd = () => {
+    if (!dragState) return;
+    const { startSec, endSec, eventId, mode, conflict } = dragState;
+    if (!conflict) {
+      if (mode === 'create') {
+        const newEvent: PlanEvent = normalizeEventTimes({
+          id: eventId,
+          title: 'New event',
+          startSec,
+          endSec,
+          color: '#8a7dff'
+        });
+        setPlan((prev) => ({ ...prev, events: [...prev.events, newEvent] }));
+      } else {
+        setPlan((prev) => ({
+          ...prev,
+          events: prev.events.map((event) =>
+            event.id === eventId
+              ? normalizeEventTimes({ ...event, startSec, endSec })
+              : event
+          )
+        }));
+      }
+    }
+    setDragState(null);
+  };
+
+  const handleGridPointerDown = (event: React.PointerEvent) => {
+    if (event.button !== 0) return;
+    const pointerSec = getPointerSec(event.clientY);
+    const snapped = snapSeconds(pointerSec);
+    const startSec = clamp(snapped, 0, plan.totalDurationSec - minDurationSec);
+    const endSec = startSec + minDurationSec;
+    setDragState({
+      mode: 'create',
+      eventId: crypto.randomUUID(),
+      anchorStartSec: startSec,
+      anchorEndSec: endSec,
+      pointerOffsetSec: 0,
+      startSec,
+      endSec,
+      conflict: hasOverlap(startSec, endSec),
+      pointerId: event.pointerId
+    });
+    event.currentTarget.setPointerCapture(event.pointerId);
+  };
+
+  const handleEventPointerDown = (event: React.PointerEvent, planEvent: PlanEvent) => {
+    if (event.button !== 0) return;
+    event.stopPropagation();
+    const pointerSec = getPointerSec(event.clientY);
+    setDragState({
+      mode: 'move',
+      eventId: planEvent.id,
+      anchorStartSec: planEvent.startSec,
+      anchorEndSec: planEvent.endSec,
+      pointerOffsetSec: pointerSec - planEvent.startSec,
+      startSec: planEvent.startSec,
+      endSec: planEvent.endSec,
+      conflict: false,
+      pointerId: event.pointerId
+    });
+    event.currentTarget.setPointerCapture(event.pointerId);
+  };
+
+  const handleResizePointerDown = (
+    event: React.PointerEvent,
+    planEvent: PlanEvent,
+    mode: 'resize-start' | 'resize-end'
+  ) => {
+    if (event.button !== 0) return;
+    event.stopPropagation();
+    setDragState({
+      mode,
+      eventId: planEvent.id,
+      anchorStartSec: planEvent.startSec,
+      anchorEndSec: planEvent.endSec,
+      pointerOffsetSec: 0,
+      startSec: planEvent.startSec,
+      endSec: planEvent.endSec,
+      conflict: false,
+      pointerId: event.pointerId
+    });
+    event.currentTarget.setPointerCapture(event.pointerId);
+  };
 
   const handleSaveEvent = (event: PlanEvent) => {
     setPlan((prev) => {
@@ -565,6 +781,21 @@ export const App = () => {
                 <span>Total duration</span>
                 <div className="value-pill">{formatDuration(plan.totalDurationSec)}</div>
               </div>
+              <label className="field">
+                <span>Snap increment (minutes)</span>
+                <input
+                  type="number"
+                  min={1}
+                  max={60}
+                  value={settings.snapMinutes}
+                  onChange={(event) =>
+                    setSettings((prev) => ({
+                      ...prev,
+                      snapMinutes: Math.max(1, Number(event.target.value) || 1)
+                    }))
+                  }
+                />
+              </label>
               <label className="toggle">
                 <input
                   type="checkbox"
@@ -622,65 +853,145 @@ export const App = () => {
             </div>
           </div>
 
-          <div className="panel">
+          <div className="panel scheduler-panel">
             <div className="panel-header">
-              <h2>Timeline</h2>
-              <p className="muted">Events are sorted by start time.</p>
+              <h2>Day Timeline Scheduler</h2>
+              <p className="muted">
+                Drag on the grid to create an event. Move or resize blocks to refine timing.
+              </p>
             </div>
-            {sortedEvents.length === 0 ? (
-              <p className="muted">No events yet. Add one to get started.</p>
-            ) : (
-              <ul className="timeline">
-                {sortedEvents.map((event) => {
-                  const width = plan.totalDurationSec
-                    ? ((event.endSec - event.startSec) / plan.totalDurationSec) * 100
-                    : 0;
-                  return (
-                    <li key={event.id} className="timeline-item">
-                      <div className="timeline-main">
-                        <EventBadge label={event.title} color={event.color} />
-                        <span className="muted">
-                          {formatDuration(event.startSec)} → {formatDuration(event.endSec)}
-                        </span>
+            {sortedEvents.length === 0 && (
+              <p className="muted">No events yet. Drag on the grid to create one.</p>
+            )}
+            <div className="scheduler">
+              <div
+                className="scheduler-scroll"
+                ref={schedulerRef}
+                onPointerMove={handleDragMove}
+                onPointerUp={handleDragEnd}
+                onPointerCancel={handleDragEnd}
+              >
+                <div className="scheduler-row">
+                  <div className="scheduler-times" style={{ height: gridHeight }}>
+                    {timeLabels.map((minute) => (
+                      <div
+                        key={minute}
+                        className="time-label"
+                        style={{ top: (minute / totalMinutes) * gridHeight }}
+                      >
+                        {formatTimeLabel(minute)}
                       </div>
-                      {event.notes && <p className="muted small">{event.notes}</p>}
-                      <div className="timeline-actions">
-                        <button
-                          type="button"
-                          className="button ghost"
-                          onClick={() => {
+                    ))}
+                  </div>
+                  <div
+                    className="scheduler-grid"
+                    style={
+                      {
+                        height: gridHeight,
+                        '--grid-minor': `${pixelsPerMinute * snapMinutes}px`,
+                        '--grid-major': `${pixelsPerMinute * 30}px`
+                      } as CSSProperties
+                    }
+                    onPointerDown={handleGridPointerDown}
+                  >
+                    {sortedEvents.map((event) => {
+                      const position = getEventPosition(event.startSec, event.endSec);
+                      return (
+                        <div
+                          key={event.id}
+                          className="scheduler-event"
+                          style={{
+                            top: position.top,
+                            height: position.height,
+                            backgroundColor: event.color || '#8a7dff'
+                          }}
+                          onPointerDown={(pointerEvent) => handleEventPointerDown(pointerEvent, event)}
+                          onDoubleClick={() => {
                             setEditingEvent(event);
                             setModalOpen(true);
                           }}
                         >
-                          Edit
-                        </button>
-                        <button
-                          type="button"
-                          className="button ghost"
-                          onClick={() => handleDuplicate(event)}
-                        >
-                          Duplicate
-                        </button>
-                        <button
-                          type="button"
-                          className="button danger"
-                          onClick={() => handleDeleteEvent(event.id)}
-                        >
-                          Delete
-                        </button>
+                          <div className="event-content">
+                            <strong>{event.title}</strong>
+                            <span className="event-time">
+                              {formatDuration(event.startSec)} → {formatDuration(event.endSec)}
+                            </span>
+                          </div>
+                          <div
+                            className="resize-handle top"
+                            onPointerDown={(pointerEvent) =>
+                              handleResizePointerDown(pointerEvent, event, 'resize-start')
+                            }
+                          />
+                          <div
+                            className="resize-handle bottom"
+                            onPointerDown={(pointerEvent) =>
+                              handleResizePointerDown(pointerEvent, event, 'resize-end')
+                            }
+                          />
+                        </div>
+                      );
+                    })}
+                    {dragState && (
+                      <div
+                        className={`scheduler-event ghost${dragState.conflict ? ' conflict' : ''}`}
+                        style={{
+                          top: getEventPosition(dragState.startSec, dragState.endSec).top,
+                          height: getEventPosition(dragState.startSec, dragState.endSec).height
+                        }}
+                      >
+                        <div className="event-tooltip">
+                          <div className="tooltip-time">
+                            {formatDuration(dragState.startSec)} → {formatDuration(dragState.endSec)}
+                          </div>
+                          <div className="tooltip-duration">
+                            {formatMinutes(dragState.endSec - dragState.startSec)}
+                          </div>
+                        </div>
                       </div>
-                      <div className="timeline-bar" aria-hidden="true">
-                        <span
-                          className="timeline-fill"
-                          style={{ width: `${width}%`, backgroundColor: event.color || '#8a7dff' }}
-                        />
+                    )}
+                  </div>
+                </div>
+              </div>
+              <div className="scheduler-actions">
+                {sortedEvents.map((event) => (
+                  <div key={event.id} className="scheduler-card">
+                    <div>
+                      <EventBadge label={event.title} color={event.color} />
+                      <div className="muted small">
+                        {formatDuration(event.startSec)} → {formatDuration(event.endSec)}
                       </div>
-                    </li>
-                  );
-                })}
-              </ul>
-            )}
+                    </div>
+                    <div className="scheduler-buttons">
+                      <button
+                        type="button"
+                        className="button ghost"
+                        onClick={() => {
+                          setEditingEvent(event);
+                          setModalOpen(true);
+                        }}
+                      >
+                        Edit
+                      </button>
+                      <button
+                        type="button"
+                        className="button ghost"
+                        onClick={() => handleDuplicate(event)}
+                      >
+                        Duplicate
+                      </button>
+                      <button
+                        type="button"
+                        className="button danger"
+                        onClick={() => handleDeleteEvent(event.id)}
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </section>
       )}
