@@ -352,9 +352,10 @@ export const App = () => {
     loadFromStorage<RunState | null>(RUN_KEY, null)
   );
   const [settings, setSettings] = useState<Settings>(() => loadSettings());
-  const [view, setView] = useState<'plan' | 'run'>(
-    runState && runState.status !== 'idle' ? 'run' : 'plan'
-  );
+  const [view, setView] = useState<'plan' | 'run'>(() => {
+    if (!runState) return 'plan';
+    return runState.status === 'running' || runState.status === 'paused' ? 'run' : 'plan';
+  });
   const [editingEvent, setEditingEvent] = useState<PlanEvent | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [, setTick] = useState(0);
@@ -364,13 +365,23 @@ export const App = () => {
 
   const planKey = useMemo(() => planToKey(plan), [plan]);
   const runPlanKey = useMemo(() => (runState ? planToKey(runState.planSnapshot) : ''), [runState]);
-  const planMismatch = Boolean(runState && runState.status !== 'idle' && planKey !== runPlanKey);
+  const planMismatch = Boolean(
+    runState &&
+      (runState.status === 'running' || runState.status === 'paused') &&
+      planKey !== runPlanKey
+  );
 
   useEffect(() => {
     saveToStorage(PLAN_KEY, plan);
   }, [plan]);
 
   useEffect(() => {
+    // Persist active runs, but do not persist completed runs. Otherwise the completion
+    // screen will reappear every time the app is opened.
+    if (runState?.status === 'completed') {
+      saveToStorage(RUN_KEY, null);
+      return;
+    }
     saveToStorage(RUN_KEY, runState);
   }, [runState]);
 
@@ -406,7 +417,14 @@ export const App = () => {
   );
   const snapMinutes = Math.max(1, settings.snapMinutes || getDefaultSnapMinutes());
   const totalMinutes = Math.max(1, Math.ceil(plan.totalDurationSec / 60));
-  const pixelsPerMinute = 3;
+  const pixelsPerMinute = useMemo(() => {
+    if (typeof window === 'undefined') return 10;
+    const isCoarsePointer = window.matchMedia('(pointer: coarse)').matches;
+    const base = isCoarsePointer ? 12 : 10;
+    const targetSnapPixels = isCoarsePointer ? 72 : 60;
+    const scaled = Math.ceil(targetSnapPixels / Math.max(1, snapMinutes));
+    return clamp(Math.max(base, scaled), 6, 20);
+  }, [snapMinutes]);
   const gridHeight = totalMinutes * pixelsPerMinute;
   const minDurationSec = snapMinutes * 60;
   const timeLabels = useMemo(() => {
@@ -699,6 +717,11 @@ export const App = () => {
   };
 
   const handleBackToEdit = () => {
+    if (runState?.status === 'completed') {
+      setRunState(null);
+      setView('plan');
+      return;
+    }
     if (runState && runState.status === 'running') {
       handlePause();
     }
