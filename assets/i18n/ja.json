@@ -2,6 +2,7 @@
   "nav": {
     "home": "ホーム",
     "research": "研究",
+    "projects": "プロジェクト",
     "contact": "連絡する"
   },
   "hero": {
@@ -61,5 +62,14 @@
     "last_updated_prefix": "最終更新：",
     "citations": "件の被引用",
     "no_year": "年未設定"
+  },
+  "projects": {
+    "page_title": "プロジェクト",
+    "subtitle": "開発してきた研究用ソフトウェアや実験コードを紹介します。",
+    "section_title": "代表的なソフトウェア",
+    "acuot": {
+      "body": "ACUOTは最適輸送に基づくモデルを探究する研究用コードベースで、学習スクリプトや評価ユーティリティ、再現可能な実験設定を提供します。",
+      "cta": "GitHubでコードを見る →"
+    }
   }
 }
