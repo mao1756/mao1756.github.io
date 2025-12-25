@@ -44,6 +44,13 @@ a{color:var(--link);text-decoration:none}a:hover{text-decoration:underline}img{m
 .overview-list li{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px 20px;box-shadow:var(--shadow)}
 .overview-list h3{margin:0 0 .4rem;font-size:1.1rem;font-weight:700}
 .overview-list p{margin:0;color:var(--muted);max-width:70ch}
+.app-showcase{padding:32px 0;border-bottom:1px solid var(--border)}
+.app-shell{display:grid;gap:20px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}
+.app-meta{display:grid;gap:16px}
+.feature-list{margin:0;padding-left:20px;color:var(--muted);display:grid;gap:.5rem}
+.app-actions{display:flex;flex-wrap:wrap;gap:.75rem}
+.app-frame{border-radius:18px;border:1px solid var(--border);overflow:hidden;min-height:520px;background:#0b0d12}
+.app-frame iframe{border:0;width:100%;height:100%;min-height:520px}
 .toolbar{display:flex;flex-wrap:wrap;gap:.7rem;align-items:center;padding:16px 0 10px;border-bottom:1px solid var(--border)}
 .toolbar input[type='search']{flex:1;min-width:220px;background:var(--panel);border:1px solid var(--border);padding:.6rem .7rem;border-radius:10px;color:var(--text)}
 .pub-list{padding:20px 0}.pub-year{margin:22px 0 10px;font-weight:800;color:#dfe6ff}
