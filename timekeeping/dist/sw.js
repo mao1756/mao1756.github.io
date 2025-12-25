@@ -10,14 +10,21 @@
  *   when Vite asset hashes change).
  */
 
-const CACHE_NAME = 'timekeeping-v2';
+const CACHE_NAME = 'timekeeping-v3';
 
 // Build absolute URLs inside the SW scope so cache keys are consistent.
 const SCOPE = self.registration.scope;
 const scopeUrl = (path) => new URL(path, SCOPE).toString();
 
 const INDEX_URL = scopeUrl('index.html');
-const CORE_ASSETS = [scopeUrl('./'), INDEX_URL, scopeUrl('manifest.webmanifest'), scopeUrl('icon.svg')];
+const CORE_ASSETS = [
+  scopeUrl('./'),
+  INDEX_URL,
+  scopeUrl('manifest.webmanifest'),
+  scopeUrl('icon.svg'),
+  // Handoff helper (optional UI, but nice to have available offline once installed).
+  scopeUrl('handoff.js')
+];
 
 self.addEventListener('install', (event) => {
   // Activate the updated SW as soon as it's installed.
