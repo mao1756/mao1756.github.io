@@ -10,7 +10,7 @@
  *   when Vite asset hashes change).
  */
 
-const CACHE_NAME = 'timekeeping-v3';
+const CACHE_NAME = 'timekeeping-v4';
 
 // Build absolute URLs inside the SW scope so cache keys are consistent.
 const SCOPE = self.registration.scope;

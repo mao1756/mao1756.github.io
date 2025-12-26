@@ -540,9 +540,30 @@ a {
 
 .run-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   gap: 12px;
   flex-wrap: wrap;
+  text-align: center;
+}
+
+.current-event-display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-inline: auto;
+  max-width: min(560px, 100%);
+}
+
+.current-event-display .event-badge {
+  font-size: clamp(1.4rem, 5vw, 2.1rem);
+  font-weight: 700;
+  gap: 10px;
+  text-align: center;
+}
+
+.current-event-display .event-dot {
+  width: 14px;
+  height: 14px;
 }
 
 .run-timer {

@@ -1031,13 +1031,15 @@ export const App = () => {
             ) : (
               <>
                 <div className="run-header">
-                  <EventBadge
-                    label={currentEvent ? currentEvent.title : 'No event'}
-                    color={currentEvent?.color}
-                  />
                   <p className="muted">Elapsed {formatDuration(elapsedSec)}</p>
                 </div>
                 <div className="run-timer">
+                  <div className="current-event-display">
+                    <EventBadge
+                      label={currentEvent ? currentEvent.title : 'No event'}
+                      color={currentEvent?.color}
+                    />
+                  </div>
                   <div className="timer-label">Remaining in current</div>
                   <div className="timer-value">
                     {currentEvent ? formatDuration(remainingEvent ?? 0) : '—'}
