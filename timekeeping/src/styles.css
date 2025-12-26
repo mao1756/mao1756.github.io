@@ -32,9 +32,9 @@ body.run-view {
 
 @media (hover: none) and (pointer: coarse) {
   body.run-view {
-    overflow: hidden;
-    overscroll-behavior: none;
-    touch-action: none;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
   }
 }
 
