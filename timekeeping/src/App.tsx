@@ -50,6 +50,62 @@ const toTimeFields = (totalSec: number) => ({
 
 const toSeconds = (minutes: number, seconds: number) => Math.max(0, minutes * 60 + seconds);
 
+const parseTimeToSeconds = (value: string) => {
+  const parts = value.split(':').map((part) => part.trim());
+  if (parts.length < 2 || parts.length > 3) return null;
+  const numbers = parts.map((part) => Number(part));
+  if (numbers.some((num) => !Number.isFinite(num) || !Number.isInteger(num))) return null;
+  if (parts.length === 2) {
+    const [minutes, seconds] = numbers;
+    if (seconds < 0 || seconds > 59 || minutes < 0) return null;
+    return minutes * 60 + seconds;
+  }
+  const [hours, minutes, seconds] = numbers;
+  if (hours < 0 || minutes < 0 || minutes > 59 || seconds < 0 || seconds > 59) return null;
+  return hours * 3600 + minutes * 60 + seconds;
+};
+
+const parseDraftLines = (text: string) => {
+  const lines = text.split(/\r?\n/);
+  const events: PlanEvent[] = [];
+  const errors: string[] = [];
+  lines.forEach((line, index) => {
+    const trimmed = line.trim();
+    if (!trimmed) return;
+    const match = trimmed.match(
+      /^(\d{1,3}:\d{2}(?::\d{2})?)\s*-\s*(\d{1,3}:\d{2}(?::\d{2})?)\s+(.+)$/
+    );
+    if (!match) {
+      errors.push(`Line ${index + 1}: "${trimmed}"`);
+      return;
+    }
+    const startSec = parseTimeToSeconds(match[1]);
+    const endSec = parseTimeToSeconds(match[2]);
+    const title = match[3].trim();
+    if (startSec === null || endSec === null) {
+      errors.push(`Line ${index + 1}: invalid time format`);
+      return;
+    }
+    if (!title) {
+      errors.push(`Line ${index + 1}: missing title`);
+      return;
+    }
+    if (endSec <= startSec) {
+      errors.push(`Line ${index + 1}: end time must be after start`);
+      return;
+    }
+    events.push(
+      normalizeEventTimes({
+        id: crypto.randomUUID(),
+        title,
+        startSec,
+        endSec
+      })
+    );
+  });
+  return { events, errors };
+};
+
 const planToKey = (plan: Plan) => JSON.stringify({
   totalDurationSec: plan.totalDurationSec,
   events: sortEvents(plan.events).map(({ id, title, startSec, endSec, color, notes }) => ({
@@ -362,6 +418,9 @@ export const App = () => {
   const lastEventRef = useRef<string | null>(null);
   const schedulerRef = useRef<HTMLDivElement | null>(null);
   const [dragState, setDragState] = useState<DragState | null>(null);
+  const [draftText, setDraftText] = useState('');
+  const [draftReplace, setDraftReplace] = useState(false);
+  const [draftMessage, setDraftMessage] = useState<{ type: 'error' | 'success'; text: string } | null>(null);
 
   const planKey = useMemo(() => planToKey(plan), [plan]);
   const runPlanKey = useMemo(() => (runState ? planToKey(runState.planSnapshot) : ''), [runState]);
@@ -733,6 +792,32 @@ export const App = () => {
     setRunState(defaultRunState(runState.planSnapshot));
   };
 
+  const handleApplyDraft = () => {
+    const trimmed = draftText.trim();
+    if (!trimmed) {
+      setDraftMessage({ type: 'error', text: 'Paste a draft to import schedule items.' });
+      return;
+    }
+    const { events, errors } = parseDraftLines(draftText);
+    if (errors.length > 0) {
+      setDraftMessage({
+        type: 'error',
+        text: `Unable to parse:\n${errors.join('\n')}`
+      });
+      return;
+    }
+    const maxEnd = events.reduce((max, event) => Math.max(max, event.endSec), 0);
+    setPlan((prev) => {
+      const nextEvents = draftReplace ? events : sortEvents([...prev.events, ...events]);
+      return {
+        ...prev,
+        totalDurationSec: Math.max(prev.totalDurationSec, maxEnd),
+        events: nextEvents
+      };
+    });
+    setDraftMessage({ type: 'success', text: `Added ${events.length} event${events.length === 1 ? '' : 's'}.` });
+  };
+
   const totalTimeFields = toTimeFields(plan.totalDurationSec);
   const remainingTotal = Math.max(0, (runState?.planSnapshot.totalDurationSec ?? 0) - elapsedSec);
   const remainingEvent = currentEvent ? Math.max(0, currentEvent.endSec - elapsedSec) : null;
@@ -873,6 +958,42 @@ export const App = () => {
               >
                 Start run mode
               </button>
+            </div>
+            <div className="draft-import">
+              <div>
+                <h3>Draft import</h3>
+                <p className="muted small">Use “00:00-05:00 Title” (one per line) to create events.</p>
+              </div>
+              <label className="field">
+                <span>Draft schedule</span>
+                <textarea
+                  value={draftText}
+                  onChange={(event) => {
+                    setDraftText(event.target.value);
+                    setDraftMessage(null);
+                  }}
+                  placeholder={`00:00-05:00 Warm-up\n05:00-10:00 Demo\n10:00-12:30 Q&A`}
+                />
+              </label>
+              <div className="draft-actions">
+                <label className="toggle">
+                  <input
+                    type="checkbox"
+                    checked={draftReplace}
+                    onChange={(event) => setDraftReplace(event.target.checked)}
+                  />
+                  <span>Replace current events</span>
+                </label>
+                <button type="button" className="button primary" onClick={handleApplyDraft}>
+                  Import draft
+                </button>
+              </div>
+              {draftMessage && (
+                <div className={`alert ${draftMessage.type === 'error' ? 'warning' : ''}`}>
+                  <strong>{draftMessage.type === 'error' ? 'Draft issue' : 'Draft imported'}</strong>
+                  <pre>{draftMessage.text}</pre>
+                </div>
+              )}
             </div>
           </div>
 
