@@ -73,7 +73,7 @@ const parseDraftLines = (text: string) => {
     const trimmed = line.trim();
     if (!trimmed) return;
     const match = trimmed.match(
-      /^(\d{1,3}:\d{2}(?::\d{2})?)\s*-\s*(\d{1,3}:\d{2}(?::\d{2})?)\s+(.+)$/
+      /^(\d{1,3}:\d{2}(?::\d{2})?)\s*-\s*(\d{1,3}:\d{2}(?::\d{2})?)\s*(?:[:–—-]\s*)?(.+)$/
     );
     if (!match) {
       errors.push(`Line ${index + 1}: "${trimmed}"`);
