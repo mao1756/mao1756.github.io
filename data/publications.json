@@ -1,7 +1,15 @@
 {
-  "updated_at": "2026-01-05T06:07:36.464Z",
+  "updated_at": "2026-01-12T06:06:35.726Z",
   "author": "i_bL0hwAAAAJ",
   "publications": [
+    {
+      "title": "Adversarial Attack on Large Language Models using Exponentiated Gradient Descent",
+      "authors": "S Biswas, M Nishino, SJ Chacko, X Liu",
+      "venue": "2025 International Joint Conference on Neural Networks (IJCNN), 1–9, 2025",
+      "year": 2025,
+      "citations": 4,
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=i_bL0hwAAAAJ&pagesize=100&citation_for_view=i_bL0hwAAAAJ:eQOLeE2rZwMC"
+    },
     {
       "title": "Mechanistic Understandings of Representation Vulnerabilities and Engineering Robust Vision Transformers",
       "authors": "CM Islam, SJ Chacko, M Nishino, X Liu",
@@ -17,14 +25,6 @@
       "year": 2025,
       "citations": 3,
       "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=i_bL0hwAAAAJ&pagesize=100&citation_for_view=i_bL0hwAAAAJ:Se3iqnhoufwC"
-    },
-    {
-      "title": "Adversarial Attack on Large Language Models using Exponentiated Gradient Descent",
-      "authors": "S Biswas, M Nishino, SJ Chacko, X Liu",
-      "venue": "2025 International Joint Conference on Neural Networks (IJCNN), 1–9, 2025",
-      "year": 2025,
-      "citations": 3,
-      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=i_bL0hwAAAAJ&pagesize=100&citation_for_view=i_bL0hwAAAAJ:eQOLeE2rZwMC"
     },
     {
       "title": "Path constrained unbalanced optimal transport",
