@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Exam Timer</title>
+  <meta name="description" content="A big, readable exam timer with presets, delay starts, and overtime modes." />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="../assets/favicon.svg" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="app-header">
+      <div>
+        <p class="app-kicker">Exam Timer</p>
+        <h1>Giant, high-contrast timing for classrooms.</h1>
+        <p class="app-subtitle">Offline-ready, accurate timing with presets and one-tap controls.</p>
+      </div>
+      <div class="header-actions">
+        <button id="fullscreenBtn" class="ghost" type="button">Enter fullscreen</button>
+        <a class="ghost" href="../projects.html">Back to projects</a>
+      </div>
+    </header>
+
+    <main class="app-main">
+      <section class="display" aria-live="polite">
+        <div id="statusLabel" class="status">Ready</div>
+        <div id="timerDisplay" class="timer">75:00</div>
+        <div class="display-row">
+          <div id="countUpDisplay" class="secondary">+00:00</div>
+          <div id="scheduleDisplay" class="secondary">No scheduled start</div>
+        </div>
+      </section>
+
+      <section class="controls">
+        <div class="primary-controls">
+          <button id="startBtn" class="primary" type="button">Start</button>
+          <button id="pauseBtn" class="primary" type="button" disabled>Pause</button>
+          <button id="resumeBtn" class="primary" type="button" disabled>Resume</button>
+          <button id="resetBtn" class="ghost" type="button">Reset</button>
+        </div>
+
+        <div class="adjust-controls">
+          <p class="section-title">Adjust time</p>
+          <div class="button-row">
+            <button data-adjust="-30" type="button">−30s</button>
+            <button data-adjust="-60" type="button">−1m</button>
+            <button data-adjust="-300" type="button">−5m</button>
+            <button data-adjust="30" type="button">+30s</button>
+            <button data-adjust="60" type="button">+1m</button>
+            <button data-adjust="300" type="button">+5m</button>
+          </div>
+        </div>
+
+        <div class="grid">
+          <div class="panel">
+            <p class="section-title">Duration & presets</p>
+            <label>
+              <span>Duration (minutes)</span>
+              <input id="durationInput" type="number" min="1" max="240" value="75" />
+            </label>
+            <label>
+              <span>Preset</span>
+              <select id="presetSelect">
+                <option value="75">75 min Exam</option>
+                <option value="50">50 min Quiz</option>
+                <option value="25">Recitation 25 min</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="panel">
+            <p class="section-title">Start timing</p>
+            <label>
+              <span>Start in (minutes)</span>
+              <input id="delayInput" type="number" min="0" max="120" value="0" />
+            </label>
+            <label>
+              <span>Start at (local time)</span>
+              <input id="startAtInput" type="time" />
+            </label>
+            <label class="toggle">
+              <input id="holdToggle" type="checkbox" />
+              <span>Hold until official start</span>
+            </label>
+          </div>
+
+          <div class="panel">
+            <p class="section-title">Display & overtime</p>
+            <label class="toggle">
+              <input id="countUpToggle" type="checkbox" checked />
+              <span>Show count-up (elapsed)</span>
+            </label>
+            <label>
+              <span>Overtime mode</span>
+              <select id="overtimeSelect">
+                <option value="stop">Stop at 0 and show TIME</option>
+                <option value="countup">Continue into +time</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <div class="lock-row">
+          <button id="lockBtn" class="ghost" type="button">Lock controls</button>
+          <button id="unlockBtn" class="primary" type="button" hidden>Press & hold 2s to unlock</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
