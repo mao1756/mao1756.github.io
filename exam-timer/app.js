@@ -10,12 +10,15 @@ const durationInput = document.getElementById('durationInput');
 const presetSelect = document.getElementById('presetSelect');
 const delayInput = document.getElementById('delayInput');
 const startAtInput = document.getElementById('startAtInput');
+const clearStartAtBtn = document.getElementById('clearStartAtBtn');
 const countUpToggle = document.getElementById('countUpToggle');
 const overtimeSelect = document.getElementById('overtimeSelect');
 const holdToggle = document.getElementById('holdToggle');
 const lockBtn = document.getElementById('lockBtn');
 const unlockBtn = document.getElementById('unlockBtn');
 const fullscreenBtn = document.getElementById('fullscreenBtn');
+const controlsToggleBtn = document.getElementById('controlsToggleBtn');
+const appContainer = document.querySelector('.app');
 
 const STORAGE_KEY = 'examTimerSettings';
 
@@ -89,9 +92,11 @@ const updateScheduleText = () => {
 const updateDisplays = () => {
   if (state.mode === 'holding') {
     const remaining = Math.max(0, Math.ceil((state.scheduledStart - Date.now()) / 1000));
-    statusLabel.textContent = state.holdMode ? 'Exam begins in' : 'Starting in';
+    statusLabel.textContent = 'Exam begins in';
     timerDisplay.textContent = formatTime(remaining);
     countUpDisplay.textContent = countUpToggle.checked ? '+00:00' : '';
+    const canStartFromHold = state.holdMode && Date.now() >= state.scheduledStart;
+    startBtn.disabled = !canStartFromHold;
     return;
   }
 
@@ -138,6 +143,7 @@ const updateDisplays = () => {
   statusLabel.textContent = state.mode === 'paused' ? 'Paused' : 'Running';
   timerDisplay.textContent = formatTime(remaining);
   countUpDisplay.textContent = countUpToggle.checked ? formatCountUp(elapsed) : '';
+  startBtn.disabled = state.mode !== 'idle';
 };
 
 const setMode = (mode) => {
@@ -190,9 +196,23 @@ const loadSettings = () => {
 };
 
 const startTimer = () => {
-  if (state.mode !== 'idle') {
+  const canStartFromHold = state.mode === 'holding'
+    && state.holdMode
+    && state.scheduledStart
+    && Date.now() >= state.scheduledStart;
+  if (state.mode !== 'idle' && !canStartFromHold) {
     return;
   }
+  if (canStartFromHold) {
+    const startAt = Date.now();
+    state.startTimestamp = startAt;
+    state.endTimestamp = startAt + state.remainingSec * 1000;
+    state.scheduledStart = null;
+    setMode('running');
+    updateDisplays();
+    return;
+  }
+
   const scheduledStart = getScheduledStart();
   state.scheduledStart = scheduledStart;
   updateScheduleText();
@@ -204,9 +224,10 @@ const startTimer = () => {
     return;
   }
 
-  const startAt = scheduledStart && scheduledStart > Date.now() ? scheduledStart : Date.now();
+  const startAt = Date.now();
   state.startTimestamp = startAt;
   state.endTimestamp = startAt + state.remainingSec * 1000;
+  state.scheduledStart = null;
   setMode('running');
   updateDisplays();
 };
@@ -255,9 +276,12 @@ const adjustTime = (delta) => {
 const tick = () => {
   if (state.mode === 'holding') {
     if (Date.now() >= state.scheduledStart) {
-      state.startTimestamp = state.scheduledStart;
-      state.endTimestamp = state.startTimestamp + state.remainingSec * 1000;
-      setMode('running');
+      if (!state.holdMode) {
+        state.startTimestamp = state.scheduledStart;
+        state.endTimestamp = state.startTimestamp + state.remainingSec * 1000;
+        state.scheduledStart = null;
+        setMode('running');
+      }
     }
   }
   if (state.mode === 'running' || state.mode === 'paused' || state.mode === 'holding' || state.mode === 'completed') {
@@ -293,6 +317,11 @@ durationInput.addEventListener('change', (event) => {
 
 delayInput.addEventListener('change', saveSettings);
 startAtInput.addEventListener('change', saveSettings);
+clearStartAtBtn.addEventListener('click', () => {
+  startAtInput.value = '';
+  saveSettings();
+  updateScheduleText();
+});
 countUpToggle.addEventListener('change', () => {
   saveSettings();
   updateDisplays();
@@ -341,6 +370,16 @@ fullscreenBtn.addEventListener('click', () => {
     document.documentElement.requestFullscreen().catch(() => {});
   } else {
     document.exitFullscreen().catch(() => {});
+  }
+});
+
+controlsToggleBtn.addEventListener('click', () => {
+  appContainer.classList.toggle('show-controls');
+});
+
+document.addEventListener('fullscreenchange', () => {
+  if (!document.fullscreenElement) {
+    appContainer.classList.remove('show-controls');
   }
 });
 

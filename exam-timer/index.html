@@ -78,7 +78,10 @@
             </label>
             <label>
               <span>Start at (local time)</span>
-              <input id="startAtInput" type="time" />
+              <div class="input-row">
+                <input id="startAtInput" type="time" />
+                <button id="clearStartAtBtn" class="ghost small" type="button">Clear</button>
+              </div>
             </label>
             <label class="toggle">
               <input id="holdToggle" type="checkbox" />
@@ -109,6 +112,10 @@
       </section>
     </main>
   </div>
+
+  <button id="controlsToggleBtn" class="controls-toggle" type="button" aria-label="Show controls">
+    <span aria-hidden="true">⚙</span>
+  </button>
 
   <script src="app.js" defer></script>
 </body>
