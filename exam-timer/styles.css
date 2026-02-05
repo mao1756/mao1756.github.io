@@ -260,14 +260,28 @@ button:disabled {
   pointer-events: none;
 }
 
-:fullscreen .app-header,
-:fullscreen .controls {
-  display: none;
+:fullscreen .app {
+  min-height: 100vh;
+  padding: 0;
+  gap: 0;
 }
 
+:fullscreen .app-main {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+:fullscreen .app-header,
+:fullscreen .controls,
 :fullscreen .status,
 :fullscreen .display-row {
   display: none;
+}
+
+:fullscreen .app.holding .status {
+  display: block;
 }
 
 :fullscreen .display {
@@ -284,12 +298,12 @@ button:disabled {
 
 :fullscreen .controls-toggle {
   opacity: 0;
+  pointer-events: auto;
 }
 
-:fullscreen .app:hover .controls-toggle,
-:fullscreen .app.show-controls .controls-toggle {
+:fullscreen .controls-toggle:hover,
+:fullscreen .controls-toggle:focus-visible {
   opacity: 1;
-  pointer-events: auto;
 }
 
 :fullscreen .app.show-controls .controls {

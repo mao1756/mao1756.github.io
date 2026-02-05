@@ -90,6 +90,8 @@ const updateScheduleText = () => {
 };
 
 const updateDisplays = () => {
+  appContainer.classList.toggle('holding', state.mode === 'holding');
+
   if (state.mode === 'holding') {
     const remaining = Math.max(0, Math.ceil((state.scheduledStart - Date.now()) / 1000));
     statusLabel.textContent = 'Exam begins in';
