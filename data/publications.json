@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-02T06:22:38.153Z",
+  "updated_at": "2026-02-09T06:23:56.010Z",
   "author": "i_bL0hwAAAAJ",
   "publications": [
     {
@@ -19,12 +19,12 @@
       "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=i_bL0hwAAAAJ&pagesize=100&citation_for_view=i_bL0hwAAAAJ:eQOLeE2rZwMC"
     },
     {
-      "title": "Unaligning Everything: Or Aligning Any Text to Any Image in Multimodal Models",
+      "title": "Unaligning everything: Or aligning any text to any image in multimodal models",
       "authors": "S Salman, M Shams, M Nishino, X Liu",
-      "venue": "2025 International Joint Conference on Neural Networks (IJCNN), 1–9, 2025",
+      "venue": "2025 International Joint Conference on Neural Networks (IJCNN), 1-9, 2025",
       "year": 2025,
       "citations": 3,
-      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=i_bL0hwAAAAJ&pagesize=100&citation_for_view=i_bL0hwAAAAJ:Se3iqnhoufwC"
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=i_bL0hwAAAAJ&pagesize=100&citation_for_view=i_bL0hwAAAAJ:3fE2CSJIrl8C"
     },
     {
       "title": "Path constrained unbalanced optimal transport",
