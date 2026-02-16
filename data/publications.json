@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-09T06:23:56.010Z",
+  "updated_at": "2026-02-16T06:22:56.342Z",
   "author": "i_bL0hwAAAAJ",
   "publications": [
     {
@@ -7,7 +7,7 @@
       "authors": "CM Islam, SJ Chacko, M Nishino, X Liu",
       "venue": "International Symposium on Visual Computing, 27-40, 2025",
       "year": 2025,
-      "citations": 5,
+      "citations": 6,
       "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=i_bL0hwAAAAJ&pagesize=100&citation_for_view=i_bL0hwAAAAJ:5nxA0vEk-isC"
     },
     {
@@ -23,7 +23,7 @@
       "authors": "S Salman, M Shams, M Nishino, X Liu",
       "venue": "2025 International Joint Conference on Neural Networks (IJCNN), 1-9, 2025",
       "year": 2025,
-      "citations": 3,
+      "citations": 4,
       "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=i_bL0hwAAAAJ&pagesize=100&citation_for_view=i_bL0hwAAAAJ:3fE2CSJIrl8C"
     },
     {
@@ -49,6 +49,14 @@
       "year": 2024,
       "citations": 9,
       "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=i_bL0hwAAAAJ&pagesize=100&citation_for_view=i_bL0hwAAAAJ:d1gkVwhDpl0C"
+    },
+    {
+      "title": "The Z-Gromov-Wasserstein distance",
+      "authors": "M Nishino, M Bauer, F Mémoli, T Needham",
+      "venue": "2026 Spring Southeastern Sectional Meeting, 0",
+      "year": null,
+      "citations": 0,
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=i_bL0hwAAAAJ&pagesize=100&citation_for_view=i_bL0hwAAAAJ:kNdYIx-mwKoC"
     }
   ]
 }
