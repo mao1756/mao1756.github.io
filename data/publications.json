@@ -1,7 +1,15 @@
 {
-  "updated_at": "2026-03-02T06:17:49.097Z",
+  "updated_at": "2026-03-09T06:20:40.128Z",
   "author": "i_bL0hwAAAAJ",
   "publications": [
+    {
+      "title": "The Z-Gromov-Wasserstein Distance",
+      "authors": "M Bauer, F Mémoli, T Needham, M Nishino",
+      "venue": "Journal of Machine Learning Research 26 (291), 1-57, 2025",
+      "year": 2025,
+      "citations": 11,
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=i_bL0hwAAAAJ&pagesize=100&citation_for_view=i_bL0hwAAAAJ:KlAtU1dfN6UC"
+    },
     {
       "title": "NeuroShield-ViT: Mechanistic Understandings of Representation Vulnerabilities and Engineering Robust Vision Transformers",
       "authors": "CM Islam, SJ Chacko, M Nishino, X Liu",
@@ -41,14 +49,6 @@
       "year": 2025,
       "citations": 0,
       "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=i_bL0hwAAAAJ&pagesize=100&citation_for_view=i_bL0hwAAAAJ:hqOjcs7Dif8C"
-    },
-    {
-      "title": "The Z-Gromov-Wasserstein distance",
-      "authors": "M Bauer, F Mémoli, T Needham, M Nishino",
-      "venue": "arXiv preprint arXiv:2408.08233, 2024",
-      "year": 2024,
-      "citations": 10,
-      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=i_bL0hwAAAAJ&pagesize=100&citation_for_view=i_bL0hwAAAAJ:d1gkVwhDpl0C"
     }
   ]
 }
