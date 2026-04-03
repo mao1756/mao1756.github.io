@@ -426,6 +426,28 @@ a {
   gap: 12px;
 }
 
+.batch-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.batch-toolbar p {
+  margin: 0;
+}
+
+.batch-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
 .scheduler-card {
   display: flex;
   align-items: center;
@@ -441,6 +463,15 @@ a {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+}
+
+.event-select {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-bottom: 6px;
 }
 
 @media (max-width: 720px) {

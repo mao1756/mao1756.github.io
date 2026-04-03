@@ -421,6 +421,7 @@ export const App = () => {
   const [draftText, setDraftText] = useState('');
   const [draftReplace, setDraftReplace] = useState(false);
   const [draftMessage, setDraftMessage] = useState<{ type: 'error' | 'success'; text: string } | null>(null);
+  const [selectedEventIds, setSelectedEventIds] = useState<string[]>([]);
 
   const planKey = useMemo(() => planToKey(plan), [plan]);
   const runPlanKey = useMemo(() => (runState ? planToKey(runState.planSnapshot) : ''), [runState]);
@@ -509,6 +510,11 @@ export const App = () => {
   );
 
   useWakeLock(Boolean(runState && runState.status === 'running'));
+
+  useEffect(() => {
+    const validIds = new Set(plan.events.map((event) => event.id));
+    setSelectedEventIds((prev) => prev.filter((id) => validIds.has(id)));
+  }, [plan.events]);
 
   useEffect(() => {
     if (!runState || runState.status !== 'running') return;
@@ -720,6 +726,31 @@ export const App = () => {
 
   const handleDeleteEvent = (id: string) => {
     setPlan((prev) => ({ ...prev, events: prev.events.filter((event) => event.id !== id) }));
+    setSelectedEventIds((prev) => prev.filter((eventId) => eventId !== id));
+  };
+
+  const handleToggleEventSelection = (id: string) => {
+    setSelectedEventIds((prev) =>
+      prev.includes(id) ? prev.filter((eventId) => eventId !== id) : [...prev, id]
+    );
+  };
+
+  const handleSelectAllEvents = () => {
+    setSelectedEventIds(sortedEvents.map((event) => event.id));
+  };
+
+  const handleClearSelection = () => {
+    setSelectedEventIds([]);
+  };
+
+  const handleDeleteSelected = () => {
+    if (selectedEventIds.length === 0) return;
+    const selectedSet = new Set(selectedEventIds);
+    setPlan((prev) => ({
+      ...prev,
+      events: prev.events.filter((event) => !selectedSet.has(event.id))
+    }));
+    setSelectedEventIds([]);
   };
 
   const handleDuplicate = (event: PlanEvent) => {
@@ -1098,9 +1129,40 @@ export const App = () => {
                 </div>
               </div>
               <div className="scheduler-actions">
+                {sortedEvents.length > 0 && (
+                  <div className="batch-toolbar">
+                    <p className="muted small">
+                      Selected {selectedEventIds.length} of {sortedEvents.length}
+                    </p>
+                    <div className="batch-buttons">
+                      <button type="button" className="button ghost" onClick={handleSelectAllEvents}>
+                        Select all
+                      </button>
+                      <button type="button" className="button ghost" onClick={handleClearSelection}>
+                        Clear
+                      </button>
+                      <button
+                        type="button"
+                        className="button danger"
+                        onClick={handleDeleteSelected}
+                        disabled={selectedEventIds.length === 0}
+                      >
+                        Delete selected
+                      </button>
+                    </div>
+                  </div>
+                )}
                 {sortedEvents.map((event) => (
                   <div key={event.id} className="scheduler-card">
                     <div>
+                      <label className="event-select">
+                        <input
+                          type="checkbox"
+                          checked={selectedEventIds.includes(event.id)}
+                          onChange={() => handleToggleEventSelection(event.id)}
+                        />
+                        <span>Select</span>
+                      </label>
                       <EventBadge label={event.title} color={event.color} />
                       <div className="muted small">
                         {formatDuration(event.startSec)} → {formatDuration(event.endSec)}
