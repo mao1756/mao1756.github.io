@@ -1,54 +1,5 @@
 {
-  "updated_at": "2026-03-30T06:35:58.442Z",
+  "updated_at": "2026-04-06T06:36:08.299Z",
   "author": "i_bL0hwAAAAJ",
-  "publications": [
-    {
-      "title": "The Z-Gromov-Wasserstein Distance",
-      "authors": "M Bauer, F Mémoli, T Needham, M Nishino",
-      "venue": "Journal of Machine Learning Research 26 (291), 1-57, 2025",
-      "year": 2025,
-      "citations": 11,
-      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=i_bL0hwAAAAJ&pagesize=100&citation_for_view=i_bL0hwAAAAJ:KlAtU1dfN6UC"
-    },
-    {
-      "title": "NeuroShield-ViT: Mechanistic Understandings of Representation Vulnerabilities and Engineering Robust Vision Transformers",
-      "authors": "CM Islam, SJ Chacko, M Nishino, X Liu",
-      "venue": "International Symposium on Visual Computing, 27-40, 2025",
-      "year": 2025,
-      "citations": 7,
-      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=i_bL0hwAAAAJ&pagesize=100&citation_for_view=i_bL0hwAAAAJ:5nxA0vEk-isC"
-    },
-    {
-      "title": "Adversarial Attack on Large Language Models using Exponentiated Gradient Descent",
-      "authors": "S Biswas, M Nishino, SJ Chacko, X Liu",
-      "venue": "2025 International Joint Conference on Neural Networks (IJCNN), 1–9, 2025",
-      "year": 2025,
-      "citations": 5,
-      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=i_bL0hwAAAAJ&pagesize=100&citation_for_view=i_bL0hwAAAAJ:eQOLeE2rZwMC"
-    },
-    {
-      "title": "Unaligning everything: Or aligning any text to any image in multimodal models",
-      "authors": "S Salman, M Shams, M Nishino, X Liu",
-      "venue": "2025 International Joint Conference on Neural Networks (IJCNN), 1-9, 2025",
-      "year": 2025,
-      "citations": 4,
-      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=i_bL0hwAAAAJ&pagesize=100&citation_for_view=i_bL0hwAAAAJ:3fE2CSJIrl8C"
-    },
-    {
-      "title": "Path constrained unbalanced optimal transport",
-      "authors": "M Bauer, N Charon, T Needham, M Nishino",
-      "venue": "Nonlinearity 38 (7), 075019, 2025",
-      "year": 2025,
-      "citations": 1,
-      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=i_bL0hwAAAAJ&pagesize=100&citation_for_view=i_bL0hwAAAAJ:ufrVoPGSRksC"
-    },
-    {
-      "title": "A Benamou-Brenier Proximal Splitting Method for Constrained Unbalanced Optimal Transport",
-      "authors": "M Nishino, M Bauer, T Needham, N Charon",
-      "venue": "arXiv preprint arXiv:2512.09250, 2025",
-      "year": 2025,
-      "citations": 0,
-      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=i_bL0hwAAAAJ&pagesize=100&citation_for_view=i_bL0hwAAAAJ:hqOjcs7Dif8C"
-    }
-  ]
+  "publications": []
 }
