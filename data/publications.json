@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-22T07:57:54.600Z",
+  "updated_at": "2026-06-29T07:39:46.646Z",
   "author": "i_bL0hwAAAAJ",
   "publications": [
     {
@@ -43,20 +43,20 @@
       "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=i_bL0hwAAAAJ&pagesize=100&citation_for_view=i_bL0hwAAAAJ:3fE2CSJIrl8C"
     },
     {
+      "title": "A Benamou-Brenier Proximal Splitting Method for Constrained Unbalanced Optimal Transport",
+      "authors": "M Nishino, M Bauer, T Needham, N Charon",
+      "venue": "arXiv preprint arXiv:2512.09250, 2025",
+      "year": 2025,
+      "citations": 1,
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=i_bL0hwAAAAJ&pagesize=100&citation_for_view=i_bL0hwAAAAJ:hqOjcs7Dif8C"
+    },
+    {
       "title": "Path constrained unbalanced optimal transport",
       "authors": "M Bauer, N Charon, T Needham, M Nishino",
       "venue": "Nonlinearity 38 (7), 075019, 2025",
       "year": 2025,
       "citations": 1,
       "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=i_bL0hwAAAAJ&pagesize=100&citation_for_view=i_bL0hwAAAAJ:ufrVoPGSRksC"
-    },
-    {
-      "title": "A Benamou-Brenier Proximal Splitting Method for Constrained Unbalanced Optimal Transport",
-      "authors": "M Nishino, M Bauer, T Needham, N Charon",
-      "venue": "arXiv preprint arXiv:2512.09250, 2025",
-      "year": 2025,
-      "citations": 0,
-      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=i_bL0hwAAAAJ&pagesize=100&citation_for_view=i_bL0hwAAAAJ:hqOjcs7Dif8C"
     }
   ]
 }
