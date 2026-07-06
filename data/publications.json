@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-29T07:39:46.646Z",
+  "updated_at": "2026-07-06T07:30:42.287Z",
   "author": "i_bL0hwAAAAJ",
   "publications": [
     {
@@ -57,6 +57,14 @@
       "year": 2025,
       "citations": 1,
       "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=i_bL0hwAAAAJ&pagesize=100&citation_for_view=i_bL0hwAAAAJ:ufrVoPGSRksC"
+    },
+    {
+      "title": "Mechanistic Detection of Patch-Based Backdoors in CNNs via Dispersion-Guided Localization",
+      "authors": "MM Al Masba, M Nishino, X Liu",
+      "venue": "",
+      "year": null,
+      "citations": 0,
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=i_bL0hwAAAAJ&pagesize=100&citation_for_view=i_bL0hwAAAAJ:YOwf2qJgpHMC"
     }
   ]
 }
