@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-06T07:30:42.287Z",
+  "updated_at": "2026-07-13T07:04:40.867Z",
   "author": "i_bL0hwAAAAJ",
   "publications": [
     {
@@ -15,8 +15,16 @@
       "authors": "M Bauer, F Mémoli, T Needham, M Nishino",
       "venue": "Journal of Machine Learning Research 26 (291), 1-57, 2025",
       "year": 2025,
-      "citations": 14,
+      "citations": 15,
       "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=i_bL0hwAAAAJ&pagesize=100&citation_for_view=i_bL0hwAAAAJ:KlAtU1dfN6UC"
+    },
+    {
+      "title": "Adversarial Attack on Large Language Models using Exponentiated Gradient Descent",
+      "authors": "S Biswas, M Nishino, SJ Chacko, X Liu",
+      "venue": "2025 International Joint Conference on Neural Networks (IJCNN), 1–9, 2025",
+      "year": 2025,
+      "citations": 8,
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=i_bL0hwAAAAJ&pagesize=100&citation_for_view=i_bL0hwAAAAJ:eQOLeE2rZwMC"
     },
     {
       "title": "NeuroShield-ViT: Mechanistic Understandings of Representation Vulnerabilities and Engineering Robust Vision Transformers",
@@ -25,14 +33,6 @@
       "year": 2025,
       "citations": 7,
       "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=i_bL0hwAAAAJ&pagesize=100&citation_for_view=i_bL0hwAAAAJ:5nxA0vEk-isC"
-    },
-    {
-      "title": "Adversarial Attack on Large Language Models using Exponentiated Gradient Descent",
-      "authors": "S Biswas, M Nishino, SJ Chacko, X Liu",
-      "venue": "2025 International Joint Conference on Neural Networks (IJCNN), 1–9, 2025",
-      "year": 2025,
-      "citations": 6,
-      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=i_bL0hwAAAAJ&pagesize=100&citation_for_view=i_bL0hwAAAAJ:eQOLeE2rZwMC"
     },
     {
       "title": "Unaligning everything: Or aligning any text to any image in multimodal models",
