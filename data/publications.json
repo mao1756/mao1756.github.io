@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-10T06:26:31.121Z",
+  "updated_at": "2026-08-17T06:09:38.703Z",
   "author": "i_bL0hwAAAAJ",
   "publications": [
     {
@@ -11,11 +11,19 @@
       "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=i_bL0hwAAAAJ&pagesize=100&citation_for_view=i_bL0hwAAAAJ:Zph67rFs4hoC"
     },
     {
+      "title": "Metric Geometry of Lebesgue, Wasserstein, and Gromov-Wasserstein Spaces: Submetries, Curvature, and Geodesics",
+      "authors": "M Bauer, F Mémoli, T Needham, M Nishino",
+      "venue": "arXiv preprint arXiv:2608.11680, 2026",
+      "year": 2026,
+      "citations": 0,
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=i_bL0hwAAAAJ&pagesize=100&citation_for_view=i_bL0hwAAAAJ:4TOpqqG69KYC"
+    },
+    {
       "title": "The Z-Gromov-Wasserstein Distance",
       "authors": "M Bauer, F Mémoli, T Needham, M Nishino",
       "venue": "Journal of Machine Learning Research 26 (291), 1-57, 2025",
       "year": 2025,
-      "citations": 16,
+      "citations": 17,
       "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=i_bL0hwAAAAJ&pagesize=100&citation_for_view=i_bL0hwAAAAJ:KlAtU1dfN6UC"
     },
     {
@@ -23,7 +31,7 @@
       "authors": "S Biswas, M Nishino, SJ Chacko, X Liu",
       "venue": "2025 International Joint Conference on Neural Networks (IJCNN), 1–9, 2025",
       "year": 2025,
-      "citations": 8,
+      "citations": 9,
       "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=i_bL0hwAAAAJ&pagesize=100&citation_for_view=i_bL0hwAAAAJ:eQOLeE2rZwMC"
     },
     {
