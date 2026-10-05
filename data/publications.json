@@ -1,15 +1,7 @@
 {
-  "updated_at": "2026-09-28T06:15:57.783Z",
+  "updated_at": "2026-10-05T06:19:30.919Z",
   "author": "i_bL0hwAAAAJ",
   "publications": [
-    {
-      "title": "Numerical Instability and Chaos: Quantifying the Unpredictability of Large Language Models",
-      "authors": "CM Islam, A Villarreal, M Nishino, S Salman, X Liu",
-      "venue": "arXiv preprint arXiv:2604.13206, 2026",
-      "year": 2026,
-      "citations": 1,
-      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=i_bL0hwAAAAJ&pagesize=100&citation_for_view=i_bL0hwAAAAJ:Zph67rFs4hoC"
-    },
     {
       "title": "Metric Geometry of Lebesgue, Wasserstein, and Gromov-Wasserstein Spaces: Submetries, Curvature, and Geodesics",
       "authors": "M Bauer, F Mémoli, T Needham, M Nishino",
@@ -19,11 +11,19 @@
       "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=i_bL0hwAAAAJ&pagesize=100&citation_for_view=i_bL0hwAAAAJ:4TOpqqG69KYC"
     },
     {
+      "title": "Neural Expansion: A Unified Mechanism for How Deep Neural Networks Generalize",
+      "authors": "CM Islam, SJ Chacko, M Nishino, C Zhang, X Liu",
+      "venue": "Advances in Neural Information Processing Systems 39, 2026",
+      "year": 2026,
+      "citations": 0,
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=i_bL0hwAAAAJ&pagesize=100&citation_for_view=i_bL0hwAAAAJ:qxL8FJ1GzNcC"
+    },
+    {
       "title": "The Z-Gromov-Wasserstein Distance",
       "authors": "M Bauer, F Mémoli, T Needham, M Nishino",
       "venue": "Journal of Machine Learning Research 26 (291), 1-57, 2025",
       "year": 2025,
-      "citations": 23,
+      "citations": 24,
       "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=i_bL0hwAAAAJ&pagesize=100&citation_for_view=i_bL0hwAAAAJ:KlAtU1dfN6UC"
     },
     {
@@ -47,7 +47,7 @@
       "authors": "S Salman, M Shams, M Nishino, X Liu",
       "venue": "2025 International Joint Conference on Neural Networks (IJCNN), 1-9, 2025",
       "year": 2025,
-      "citations": 3,
+      "citations": 4,
       "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=i_bL0hwAAAAJ&pagesize=100&citation_for_view=i_bL0hwAAAAJ:3fE2CSJIrl8C"
     },
     {
