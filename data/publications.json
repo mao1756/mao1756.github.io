@@ -1,7 +1,15 @@
 {
-  "updated_at": "2026-10-19T06:14:31.031Z",
+  "updated_at": "2026-10-26T06:14:16.793Z",
   "author": "i_bL0hwAAAAJ",
   "publications": [
+    {
+      "title": "Intriguing equivalence structures of the embedding space of vision transformers",
+      "authors": "S Salman, M Shams, CM Islam, M Nishino, X Liu",
+      "venue": "2026 International Joint Conference on Neural Networks (IJCNN), 1-8, 2026",
+      "year": 2026,
+      "citations": 9,
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=i_bL0hwAAAAJ&pagesize=100&citation_for_view=i_bL0hwAAAAJ:Wp0gIr-vW9MC"
+    },
     {
       "title": "Stochastic Completeness for Landmark Shape Spaces with Induced Metrics",
       "authors": "K Habermann, M Nishino, S Sommer",
@@ -55,7 +63,7 @@
       "authors": "S Salman, M Shams, M Nishino, X Liu",
       "venue": "2025 International Joint Conference on Neural Networks (IJCNN), 1-9, 2025",
       "year": 2025,
-      "citations": 4,
+      "citations": 5,
       "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=i_bL0hwAAAAJ&pagesize=100&citation_for_view=i_bL0hwAAAAJ:3fE2CSJIrl8C"
     },
     {
