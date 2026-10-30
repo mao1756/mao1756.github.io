@@ -7,92 +7,70 @@
   <meta name="description" content="The personal homepage of Mao Nishino: research and publications." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="icon" href="assets/favicon.svg" />
   <link rel="stylesheet" href="assets/styles.css" />
 </head>
 <body>
-  <header class="site-header glass">
+  <a class="skip-link" href="#main" data-i18n="nav.skip">Skip to content</a>
+  <header class="site-header">
     <div class="container header-inner">
-      <a href="index.html" class="brand">
-        <img src="assets/logo.svg" alt="" class="brand-mark" />
-        <span class="brand-name">Mao&nbsp;Nishino</span>
-      </a>
-      <button id="menuToggle" class="menu-toggle" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="headerActions">
-        <span class="menu-icon" aria-hidden="true"></span>
-        <span class="menu-label">Menu</span>
-      </button>
-      <div class="header-actions" id="headerActions">
-        <nav class="nav" id="primaryNav">
-          <a href="index.html" class="nav-link active" data-i18n="nav.home">Home</a>
+      <a href="index.html" class="brand">Mao Nishino</a>
+      <div class="header-actions">
+        <nav class="nav" aria-label="Primary">
+          <a href="index.html" class="nav-link active" aria-current="page" data-i18n="nav.home">Home</a>
           <a href="research.html" class="nav-link" data-i18n="nav.research">Research</a>
           <a href="projects.html" class="nav-link" data-i18n="nav.projects">Projects</a>
         </nav>
-        <div class="header-cta-wrap">
-          <button id="langToggle" class="lang-toggle" type="button" aria-label="Language">JP / EN</button>
-          <a class="cta" href="mailto:mnishino@fsu.edu" data-i18n="nav.contact">Contact</a>
-        </div>
+        <button id="langToggle" class="lang-toggle" type="button" aria-label="Switch to Japanese">EN / JP</button>
       </div>
     </div>
   </header>
 
-  <main>
-    <section class="hero">
-      <div class="container hero-inner">
-        <div class="hero-copy">
-          <p class="eyebrow" data-i18n="hero.eyebrow">PhD Candidate · Biomathematics</p>
-          <h1 class="hero-title gradient-text" data-i18n="hero.title">Optimal transport, geometry, and machine learning.</h1>
-          <p class="hero-subtitle" data-i18n="hero.subtitle">
-            I'm <strong>Mao Nishino</strong>, a PhD candidate in Mathematics at Florida State University.
-            My research interests include optimal transport, deep learning, Riemannian & metric geometry, and data science.
-          </p>
-          <div class="hero-actions">
-            <a class="button primary" href="research.html" data-i18n="hero.buttons.research">Explore Research</a>
-          </div>
-        </div>
-
-        <!-- Portrait block -->
-        <div class="portrait-wrap">
-          <img src="assets/profile.jpg" alt="Portrait of Mao Nishino" class="portrait" onerror="this.src='assets/profile-placeholder.svg'">
-          <div class="portrait-ring" aria-hidden="true"></div>
-        </div>
-      </div>
-      <div class="hero-bg"></div>
-    </section>
-
-    <section class="cards">
-      <div class="container grid-3">
-        <article class="card">
-          <h3 data-i18n="cards.research.title">Research interests</h3>
-          <ul class="bullets">
-            <li data-i18n="cards.research.i1">Optimal Transport</li>
-            <li data-i18n="cards.research.i2">Deep Learning</li>
-            <li data-i18n="cards.research.i3">Riemannian & Metric Geometry</li>
-            <li data-i18n="cards.research.i4">Data Science</li>
-          </ul>
-        </article>
-
-        <article class="card">
-          <h3 data-i18n="cards.edu.title">Current & Education</h3>
-          <ul class="bullets">
-            <li data-i18n="cards.edu.b1">Ph.D. Mathematics (2021–present), Florida State University</li>
-            <li data-i18n="cards.edu.b2">B.Sc. Mathematics (2017–2021), Kanazawa University</li>
-          </ul>
-          <a class="text-link" href="research.html" data-i18n="cards.edu.cta">See my recent work →</a>
-        </article>
-
-        <article class="card">
-          <h3 data-i18n="cards.contact.title">Get in touch</h3>
-          <p data-i18n="cards.contact.text">Email is best. You can also find me on LinkedIn, GitHub, and Researchmap.</p>
-          <div class="socials">
-            <a href="mailto:mnishino@fsu.edu" aria-label="Email">✉️</a>
-            <a href="https://www.linkedin.com/in/mao-nishino-41604b22b/" aria-label="LinkedIn">in</a>
-            <a href="https://github.com/mao1756" aria-label="GitHub">GH</a>
-            <a href="https://researchmap.jp/mnishino" aria-label="Researchmap">RM</a>
-          </div>
-        </article>
+  <main id="main" class="container">
+    <section class="profile" aria-labelledby="profile-name">
+      <img src="assets/profile.jpg" alt="Portrait of Mao Nishino" class="portrait" width="176" height="208" onerror="this.onerror=null;this.src='assets/profile-placeholder.svg'">
+      <div>
+        <h1 id="profile-name" class="profile-name" data-i18n="home.name">Mao Nishino</h1>
+        <p class="profile-role" data-i18n="home.role">PhD candidate · Biomathematics</p>
+        <p class="profile-affiliation">
+          <span data-i18n="home.department">Department of Mathematics</span>
+          <span data-i18n="home.university">Florida State University</span>
+        </p>
+        <p class="profile-contact"><span data-i18n="home.email">Email:</span> <a href="mailto:mnishino@fsu.edu">mnishino@fsu.edu</a></p>
       </div>
     </section>
+
+    <div class="home-sections">
+      <section class="home-section">
+        <h2 data-i18n="home.about.title">About me</h2>
+        <p><span data-i18n="home.about.body">I am a PhD candidate in Mathematics at Florida State University. My research interests include optimal transport, deep learning, Riemannian and metric geometry, and data science.</span> <span data-i18n="home.about.research_intro">More information about my research and a complete list of publications can be found on </span><a href="research.html" data-i18n="home.about.research_link">my research</a><span data-i18n="home.about.scholar_intro"> page, see also my </span><a href="https://scholar.google.co.jp/citations?user=i_bL0hwAAAAJ&amp;hl=ja" data-i18n="home.about.scholar_link">google.scholar</a><span data-i18n="home.about.scholar_outro"> profile.</span></p>
+      </section>
+
+      <section class="home-section">
+        <h2 data-i18n="home.education.title">Education</h2>
+        <ul class="education-list">
+          <li>
+            <span class="education-date" data-i18n="home.education.phd_dates">2021–present</span>
+            <span data-i18n="home.education.phd">Ph.D. in Mathematics, Florida State University</span>
+          </li>
+          <li>
+            <span class="education-date">2017–2021</span>
+            <span data-i18n="home.education.bsc">B.Sc. in Mathematics, Kanazawa University</span>
+          </li>
+        </ul>
+      </section>
+
+      <section class="home-section">
+        <h2 data-i18n="home.contact.title">Contact and links</h2>
+        <p data-i18n="home.contact.body">Email is the best way to reach me. You can also find me here:</p>
+        <ul class="link-list">
+          <li><a href="https://www.linkedin.com/in/mao-nishino-41604b22b/">LinkedIn</a></li>
+          <li><a href="https://github.com/mao1756">GitHub</a></li>
+          <li><a href="https://researchmap.jp/mnishino">Researchmap</a></li>
+        </ul>
+      </section>
+    </div>
   </main>
 
   <footer class="site-footer">

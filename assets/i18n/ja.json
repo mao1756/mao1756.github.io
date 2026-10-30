@@ -3,38 +3,12 @@
     "home": "ホーム",
     "research": "研究",
     "projects": "プロジェクト",
-    "contact": "連絡する"
-  },
-  "hero": {
-    "eyebrow": "博士課程（数理生物学）",
-    "title": "最適輸送・幾何学・機械学習",
-    "subtitle": "私はフロリダ州立大学・数学科の博士課程学生、西野眞王 です。最適輸送、深層学習、リーマン幾何・距離幾何、データサイエンスに興味を持っています。",
-    "buttons": {
-      "research": "研究内容を見る"
-    }
-  },
-  "cards": {
-    "research": {
-      "title": "研究分野",
-      "i1": "最適輸送",
-      "i2": "深層学習",
-      "i3": "リーマン幾何・距離幾何",
-      "i4": "データサイエンス"
-    },
-    "edu": {
-      "title": "現在・学歴",
-      "b1": "フロリダ州立大学 数学 博士課程（2021–現在）",
-      "b2": "金沢大学 学士(理学)（2017–2021）",
-      "cta": "最近の研究を見る →"
-    },
-    "contact": {
-      "title": "お問い合わせ",
-      "text": "ご連絡はメールが確実です。LinkedIn・GitHub・researchmapにもいます。"
-    }
+    "contact": "連絡する",
+    "skip": "本文へ移動"
   },
   "pub": {
     "page_title": "研究",
-    "subtitle": "この一覧はGoogle Scholarから自動同期します。",
+    "subtitle": "研究論文と現在の研究分野を紹介します。",
     "overview": {
       "title": "研究概要",
       "optimal_transport": {
@@ -57,7 +31,8 @@
         "title_asc": "タイトル（A→Z）",
         "title_desc": "タイトル（Z→A）"
       },
-      "group_by_year": "年ごとにまとめる"
+      "group_by_year": "年ごとにまとめる",
+      "search_label": "論文を検索"
     },
     "last_updated_prefix": "最終更新：",
     "citations": "件の被引用",
@@ -66,7 +41,7 @@
   "projects": {
     "page_title": "プロジェクト",
     "subtitle": "開発してきた研究用ソフトウェアや実験コードを紹介します。",
-    "section_title": "代表的なソフトウェア",
+    "section_title": "研究用ソフトウェア",
     "timekeeping": {
       "title": "Timekeeping",
       "body": "モバイルファーストの計画と実行モードで、スケジュールを管理できるタイマーです。",
@@ -74,11 +49,45 @@
         "plan": "イベントを組み立ててセッションを計画。",
         "run": "全画面タイマーで残り時間をリアルタイム表示。",
         "mobile": "iPhone Safariのセーフエリアと画面常時点灯に最適化。"
-      }
+      },
+      "open": "Timekeepingを開く",
+      "notes": "セットアップの説明",
+      "preview": "Timekeepingのプレビュー"
     },
     "acuot": {
       "body": "ACUOTは最適輸送に基づくモデルを探究する研究用コードベースで、学習スクリプトや評価ユーティリティ、再現可能な実験設定を提供します。",
-      "cta": "GitHubでコードを見る →"
+      "cta": "GitHubのコード"
+    },
+    "classroom_title": "授業用ツール",
+    "exam_timer": {
+      "body": "大きく見やすい試験用タイマーです。プリセット、開始時刻の指定、延長表示、オフラインでの計時に対応しています。",
+      "link": "試験用タイマーを開く"
+    }
+  },
+  "home": {
+    "name": "西野 眞王",
+    "role": "博士課程（数理生物学）",
+    "department": "数学科",
+    "university": "フロリダ州立大学",
+    "email": "メール：",
+    "about": {
+      "title": "自己紹介",
+      "body": "フロリダ州立大学・数学科の博士課程学生、西野眞王です。最適輸送、深層学習、リーマン幾何・距離幾何、データサイエンスに興味を持っています。",
+      "research_intro": "研究内容や論文の一覧については、",
+      "research_link": "研究",
+      "scholar_intro": "ページをご覧ください。",
+      "scholar_link": "Google Scholar",
+      "scholar_outro": "のプロフィールもご参照ください。"
+    },
+    "education": {
+      "title": "学歴",
+      "phd_dates": "2021–現在",
+      "phd": "フロリダ州立大学 数学 博士課程",
+      "bsc": "金沢大学 学士（理学）"
+    },
+    "contact": {
+      "title": "連絡先・リンク",
+      "body": "ご連絡はメールが確実です。以下のプロフィールもご覧ください。"
     }
   }
 }

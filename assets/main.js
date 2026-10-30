@@ -34,6 +34,7 @@
       const other = (lang === 'ja') ? 'EN' : 'JP';
       const cur = (lang === 'ja') ? 'JP' : 'EN';
       toggle.innerHTML = `<span class="on">${cur}</span> / <span>${other}</span>`;
+      toggle.setAttribute('aria-label', lang === 'ja' ? 'Switch to English' : '日本語に切り替える');
     }
     document.dispatchEvent(new CustomEvent('i18n:applied', { detail: { lang } }));
   }
@@ -53,41 +54,6 @@
     // year
     const y = document.getElementById('year'); if (y) y.textContent = new Date().getFullYear();
     initI18n();
-
-    const menuToggle = document.getElementById('menuToggle');
-    const headerActions = document.getElementById('headerActions');
-    if (menuToggle && headerActions){
-      const closeMenu = () => {
-        if (!document.body.classList.contains('menu-open')) return;
-        document.body.classList.remove('menu-open');
-        menuToggle.setAttribute('aria-expanded', 'false');
-      };
-      menuToggle.addEventListener('click', () => {
-        const isOpen = !document.body.classList.contains('menu-open');
-        if (isOpen){
-          document.body.classList.add('menu-open');
-        } else {
-          document.body.classList.remove('menu-open');
-        }
-        menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-      });
-      headerActions.querySelectorAll('.nav-link, .cta').forEach(el => {
-        el.addEventListener('click', closeMenu);
-      });
-      document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape'){ closeMenu(); }
-      });
-      const desktopMq = window.matchMedia('(min-width: 861px)');
-      if (desktopMq.addEventListener){
-        desktopMq.addEventListener('change', (event) => {
-          if (event.matches) closeMenu();
-        });
-      } else if (desktopMq.addListener){
-        desktopMq.addListener((event) => {
-          if (event.matches) closeMenu();
-        });
-      }
-    }
 
     // toggle handler
     const toggle = document.getElementById('langToggle');
