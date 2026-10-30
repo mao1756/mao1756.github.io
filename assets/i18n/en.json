@@ -85,6 +85,24 @@
       "phd": "Ph.D. in Mathematics, Florida State University",
       "bsc": "B.Sc. in Mathematics, Kanazawa University"
     },
+    "experience": {
+      "title": "Experience",
+      "qia": {
+        "dates": "Jun–Aug 2026",
+        "organization": "qia",
+        "role": "Machine Learning Intern"
+      },
+      "copenhagen": {
+        "dates": "May–Jun 2026",
+        "organization": "University of Copenhagen, Department of Computer Science (DIKU)",
+        "role": "Associate"
+      },
+      "jhu": {
+        "dates": "May–Jun 2023",
+        "organization": "Johns Hopkins University, Department of Applied Mathematics and Statistics, Whiting School of Engineering",
+        "role": "Visiting Graduate Scholar"
+      }
+    },
     "contact": {
       "title": "Contact and links",
       "body": "Email is the best way to reach me. You can also find me here:"
