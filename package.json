@@ -4,6 +4,7 @@
   "type": "module",
   "private": true,
   "scripts": {
+    "version:assets": "node tools/version-assets.mjs",
     "fetch:serpapi": "node scripts/fetch_serpapi_scholar_author.js",
     "fetch:openalex": "node scripts/fetch_openalex.js",
     "fetch:scholar": "node scripts/fetch_scholar.js"
