@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-26T06:14:16.793Z",
+  "updated_at": "2026-11-02T06:09:30.728Z",
   "author": "i_bL0hwAAAAJ",
   "publications": [
     {
@@ -25,6 +25,14 @@
       "year": 2026,
       "citations": 0,
       "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=i_bL0hwAAAAJ&pagesize=100&citation_for_view=i_bL0hwAAAAJ:4TOpqqG69KYC"
+    },
+    {
+      "title": "Mechanistic Detection of Patch-Based Backdoors in CNNs via Dispersion-Guided Localization",
+      "authors": "MM Al Masba, M Nishino, X Liu",
+      "venue": "2026 International Joint Conference on Neural Networks (IJCNN), 1-8, 2026",
+      "year": 2026,
+      "citations": 0,
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=i_bL0hwAAAAJ&pagesize=100&citation_for_view=i_bL0hwAAAAJ:9ZlFYXVOiuMC"
     },
     {
       "title": "Neural Expansion: A Unified Mechanism for How Deep Neural Networks Generalize",
